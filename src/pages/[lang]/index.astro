@@ -1,0 +1,25 @@
+---
+import {homeTranslations} from '../../assets/translations/home';
+import type {locale} from '../../assets/types/i18n';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths () {
+
+    return [
+        {
+            params: {lang: 'bg'}
+        },
+        {
+            params: {lang: 'en'}
+        }
+    ];
+
+}
+
+const {lang} = Astro.params;
+const translations = homeTranslations[lang as locale];
+---
+<Layout>
+    <h1>{translations.heading}</h1>
+</Layout>
+
