@@ -1,6 +1,6 @@
 ---
-import type { locale } from '../../../assets/types/i18n';
-import { navigationTranslations } from '../../../translations/nav';
+import type { locale } from "../../../assets/types/i18n";
+import { navigationTranslations } from "../../../translations/nav";
 
 interface Props {
   language: locale;
@@ -34,13 +34,21 @@ const links: Link[] = [
   },
 ];
 ---
-<nav>
+
+<nav class="bg-black">
   <a href={`/${language}`}>
-    <img src="/src/assets/images/logo_navbar_mobile.png" alt={''} />
+    <img
+      class="rounded-xs"
+      srcset="/src/assets/images/logo_navbar_mobile.png 170w,
+      /src/assets/images/logo_navbar_small_tablet.png 250w,
+      /src/assets/images/logo_navbar_large.png"
+      sizes="(max-width: 320px) 170px,
+      (max-width: 744px) 250px"
+      alt=""
+    />
   </a>
   <div>
     <a href="/en">EN</a>
-    <button id="open-mobile-menu">
-    </button>
+    <button id="open-mobile-menu"> </button>
   </div>
 </nav>

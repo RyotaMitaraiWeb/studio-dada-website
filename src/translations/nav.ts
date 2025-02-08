@@ -5,7 +5,8 @@ export const navigationTranslations = {
     customers: 'Клиенти',
     portfolio: 'Портфолио',
     about: 'За нас',
-    contacts: 'Контакти'
+    contacts: 'Контакти',
+    closeButton: 'Затвори',
 
   },
   en: {
@@ -14,6 +15,7 @@ export const navigationTranslations = {
     customers: 'Customers',
     portfolio: 'Portfolio',
     about: 'About us',
-    contacts: 'Contacts'
+    contacts: 'Contacts',
+    closeButton: 'Close'
   }
 };
