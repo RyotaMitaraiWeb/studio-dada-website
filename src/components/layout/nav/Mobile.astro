@@ -1,0 +1,46 @@
+---
+import type { locale } from '../../../assets/types/i18n';
+import { navigationTranslations } from '../../../translations/nav';
+
+interface Props {
+  language: locale;
+}
+
+type Link = {
+  value: string;
+};
+
+const { language } = Astro.props;
+const translations = navigationTranslations[language];
+
+const links: Link[] = [
+  {
+    value: translations.home,
+  },
+  {
+    value: translations.catalogue,
+  },
+  {
+    value: translations.customers,
+  },
+  {
+    value: translations.portfolio,
+  },
+  {
+    value: translations.about,
+  },
+  {
+    value: translations.contacts,
+  },
+];
+---
+<nav>
+  <a href={`/${language}`}>
+    <img src="/src/assets/images/logo_navbar_mobile.png" alt={''} />
+  </a>
+  <div>
+    <a href="/en">EN</a>
+    <button id="open-mobile-menu">
+    </button>
+  </div>
+</nav>
