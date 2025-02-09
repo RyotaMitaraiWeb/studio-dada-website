@@ -11,7 +11,7 @@ export function imageSizes(widths: number[]) {
       return `${width}px`;
     }
 
-    return `(max-width: ${viewportWidth}px) ${width}px`
+    return `(max-width: ${viewportWidth - 1}px) ${width}px`
   })
     .join(', ');
 }

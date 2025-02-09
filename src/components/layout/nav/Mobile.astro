@@ -7,38 +7,14 @@ import { Image } from "astro:assets";
 import { imageSizes } from "../../../util/imageSizes";
 import BurgerMenu from "../../icons/BurgerMenu.astro";
 import FlagUK from "../../icons/FlagUK.astro";
+import MobileMenu from "./MobileMenu.astro";
 
 interface Props {
   language: locale;
 }
 
-type Link = {
-  value: string;
-};
-
 const { language } = Astro.props;
 const translations = navigationTranslations[language];
-
-const links: Link[] = [
-  {
-    value: translations.home,
-  },
-  {
-    value: translations.catalogue,
-  },
-  {
-    value: translations.customers,
-  },
-  {
-    value: translations.portfolio,
-  },
-  {
-    value: translations.about,
-  },
-  {
-    value: translations.contacts,
-  },
-];
 
 const logos = srcset([
   ["logo_studio_dada.png", 1575],
@@ -50,11 +26,14 @@ const sizes = imageSizes([170, 250, 540]);
 ---
 
 <nav class="bg-black flex justify-between items-center px-2 py-4">
-  <a href={`/${language}`} class="focus-item">
+  <a href={`/${language}`} class="focus-item transition-colors">
     <img class="rounded-xs" srcset={logos} sizes={sizes} alt="" />
   </a>
   <div class="flex items-center gap-4">
-    <a href="/en" class="focus-item border border-brand-white flex w-max p-0.5 rounded-sm">
+    <a
+      href="/en"
+      class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+    >
       <FlagUK size={30} />
     </a>
     <button
@@ -64,7 +43,26 @@ const sizes = imageSizes([170, 250, 540]);
       <BurgerMenu size={36} />
     </button>
   </div>
+  <MobileMenu language={language} />
 </nav>
+
+<script>
+  const button = document.querySelector(
+    "#open-mobile-menu"
+  ) as HTMLButtonElement;
+
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const dialog = document.querySelector(
+      "#mobile-nav-menu"
+    ) as HTMLDialogElement;
+
+    dialog.showModal();
+
+    history.pushState({ dialogOpen: true }, "");
+  });
+</script>
 
 <style scoped>
   #open-mobile-menu:hover {
