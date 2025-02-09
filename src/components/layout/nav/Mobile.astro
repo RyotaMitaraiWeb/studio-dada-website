@@ -1,9 +1,6 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
-import { navigationTranslations } from "../../../translations/nav";
-import { srcset, type Srcset } from "../../../util/srcset";
-import { imagesUrl } from "../../../util/imageUrl";
-import { Image } from "astro:assets";
+import { srcset } from "../../../util/srcset";
 import { imageSizes } from "../../../util/imageSizes";
 import BurgerMenu from "../../icons/BurgerMenu.astro";
 import FlagUK from "../../icons/FlagUK.astro";
@@ -14,18 +11,16 @@ interface Props {
 }
 
 const { language } = Astro.props;
-const translations = navigationTranslations[language];
 
 const logos = srcset([
-  ["logo_studio_dada.png", 1575],
-  ["logo_studio_dada.png", 1575],
-  ["logo_studio_dada.png", 1575],
+  ["logo_navbar_mobile.png", 170],
+  ["logo_navbar_small_tablet.png", 250],
 ]);
 
-const sizes = imageSizes([170, 250, 540]);
+const sizes = imageSizes([170, 250]);
 ---
 
-<nav class="bg-black flex justify-between items-center px-2 py-4">
+<nav class="lg:hidden bg-black flex justify-between items-center px-2 py-4">
   <a href={`/${language}`} class="focus-item transition-colors">
     <img class="rounded-xs" srcset={logos} sizes={sizes} alt="" />
   </a>

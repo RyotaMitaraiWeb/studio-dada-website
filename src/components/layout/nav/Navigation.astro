@@ -1,38 +1,15 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
 import { navigationTranslations } from "../../../translations/nav";
+import DesktopNavigation from "./DesktopNavigation.astro";
 import Mobile from "./Mobile.astro";
 
 interface Props {
   language: locale;
 }
 
-type Link = {
-  value: string;
-};
-
 const { language } = Astro.props;
-const translations = navigationTranslations[language];
-
-const links: Link[] = [
-  {
-    value: translations.home,
-  },
-  {
-    value: translations.catalogue,
-  },
-  {
-    value: translations.customers,
-  },
-  {
-    value: translations.portfolio,
-  },
-  {
-    value: translations.about,
-  },
-  {
-    value: translations.contacts,
-  },
-];
 ---
-<Mobile language={language}></Mobile>
+
+<Mobile language={language} />
+<DesktopNavigation language={language} />

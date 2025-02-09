@@ -1,0 +1,102 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { srcset } from "../../../util/srcset";
+import { imageSizes } from "../../../util/imageSizes";
+import FlagUK from "../../icons/FlagUK.astro";
+import { navigationTranslations } from "../../../translations/nav";
+
+type Link = {
+  value: string;
+  href: string;
+};
+
+interface Props {
+  language: locale;
+}
+
+const { language } = Astro.props;
+const translations = navigationTranslations[language];
+
+const logos = srcset([
+  ["logo_studio_dada.png", 1575],
+  ["logo_studio_dada.png", 1575],
+  ["logo_studio_dada.png", 1575],
+  ["logo_studio_dada.png", 1575],
+]);
+
+const sizes = imageSizes([170, 250, 290, 504]);
+
+const links: Link[] = [
+  {
+    value: translations.home,
+    href: `/${language}`,
+  },
+  {
+    value: translations.catalogue,
+    href: `/${language}/catalogue`,
+  },
+  {
+    value: translations.customers,
+    href: `/${language}/customers`,
+  },
+  {
+    value: translations.portfolio,
+    href: `/${language}/portfolio`,
+  },
+  {
+    value: translations.about,
+    href: `/${language}/about`,
+  },
+  {
+    value: translations.contacts,
+    href: `/${language}/contacts`,
+  },
+];
+---
+
+<nav class="hidden bg-black lg:flex justify-between items-center p-4">
+  <a href={`/${language}`} class="focus-item transition-colors">
+    <img class="rounded-xs" srcset={logos} sizes={sizes} alt="" />
+  </a>
+  <div class="flex items-center gap-8">
+    <a
+      href="/en"
+      class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+    >
+      <FlagUK size={30} />
+    </a>
+
+    <ul class="flex gap-8">
+      {
+        links.map((link) => (
+          <li class="text-base xl:text-xl">
+            <a
+              class="text-brand-white hover:underline focus-item transition-colors"
+              href={link.href}
+            >
+              {link.value}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const button = document.querySelector(
+    "#open-mobile-menu"
+  ) as HTMLButtonElement;
+
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const dialog = document.querySelector(
+      "#mobile-nav-menu"
+    ) as HTMLDialogElement;
+
+    dialog.showModal();
+
+    history.pushState({ dialogOpen: true }, "");
+  });
+</script>
