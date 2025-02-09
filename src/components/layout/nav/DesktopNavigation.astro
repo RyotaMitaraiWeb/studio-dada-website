@@ -56,12 +56,13 @@ const links: Link[] = [
 
 <nav class="hidden bg-black lg:flex justify-between items-center p-4">
   <a href={`/${language}`} class="focus-item transition-colors">
-    <img class="rounded-xs" srcset={logos} sizes={sizes} alt="" />
+    <img class="rounded-xs" srcset={logos} sizes={sizes} alt={navigationTranslations[language].logo} />
   </a>
   <div class="flex items-center gap-8">
     <a
       href="/en"
       class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+      aria-description="Смени на английски език / switch to English"
     >
       <FlagUK size={30} />
     </a>

@@ -7,7 +7,8 @@ export const navigationTranslations = {
     about: 'За нас',
     contacts: 'Контакти',
     closeButton: 'Затвори',
-
+    openMenuButton: 'Отвори навигационно меню',
+    logo: 'Лого на Студио Дада (отиди на начална страница)'
   },
   en: {
     home: 'Home',
@@ -16,6 +17,8 @@ export const navigationTranslations = {
     portfolio: 'Portfolio',
     about: 'About us',
     contacts: 'Contacts',
-    closeButton: 'Close'
+    closeButton: 'Close',
+    openMenuButton: 'Open navigation menu',
+    logo: 'Studio Dada logo (go to home page)'
   }
 };
