@@ -1,6 +1,12 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
 import { navigationTranslations } from "../../../translations/nav";
+import { srcset, type Srcset } from "../../../util/srcset";
+import { imagesUrl } from "../../../util/imageUrl";
+import { Image } from "astro:assets";
+import { imageSizes } from "../../../util/imageSizes";
+import BurgerMenu from "../../icons/BurgerMenu.astro";
+import FlagUK from "../../icons/FlagUK.astro";
 
 interface Props {
   language: locale;
@@ -33,22 +39,35 @@ const links: Link[] = [
     value: translations.contacts,
   },
 ];
+
+const logos = srcset([
+  ["logo_studio_dada.png", 1575],
+  ["logo_studio_dada.png", 1575],
+  ["logo_studio_dada.png", 1575],
+]);
+
+const sizes = imageSizes([170, 250, 540]);
 ---
 
-<nav class="bg-black">
-  <a href={`/${language}`}>
-    <img
-      class="rounded-xs"
-      srcset="/src/assets/images/logo_navbar_mobile.png 170w,
-      /src/assets/images/logo_navbar_small_tablet.png 250w,
-      /src/assets/images/logo_navbar_large.png"
-      sizes="(max-width: 320px) 170px,
-      (max-width: 744px) 250px"
-      alt=""
-    />
+<nav class="bg-black flex justify-between items-center px-2 py-4">
+  <a href={`/${language}`} class="focus-item">
+    <img class="rounded-xs" srcset={logos} sizes={sizes} alt="" />
   </a>
-  <div>
-    <a href="/en">EN</a>
-    <button id="open-mobile-menu"> </button>
+  <div class="flex items-center gap-4">
+    <a href="/en" class="focus-item border border-brand-white flex w-max p-0.5 rounded-sm">
+      <FlagUK size={30} />
+    </a>
+    <button
+      class="focus-item p-1 cursor-pointer active:opacity-60 rounded-full motion-safe:transition-colors"
+      id="open-mobile-menu"
+    >
+      <BurgerMenu size={36} />
+    </button>
   </div>
 </nav>
+
+<style scoped>
+  #open-mobile-menu:hover {
+    background-color: rgba(224, 244, 244, 0.3);
+  }
+</style>

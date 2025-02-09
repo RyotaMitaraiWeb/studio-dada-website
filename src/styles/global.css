@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
+.focus-item:focus-visible {
+  outline: 3px solid #a3e3e3;
+}
+
 @theme {
   --color-black: #221E20;
+  --color-brand-white: #e0e0e0;
 }
