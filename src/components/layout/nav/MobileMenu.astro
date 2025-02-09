@@ -83,18 +83,6 @@ const links: Link[] = [
       dialog.close();
     }
   });
-
-  window.addEventListener("popstate", () => {
-    if (dialog.open) {
-      dialog.close();
-    }
-  });
-
-  dialog.addEventListener('close', () => {
-    if (history.state?.dialogOpen) {
-      history.back();
-    }
-  });
 </script>
 
 <style scoped>
