@@ -11,5 +11,12 @@ interface Props {
 const { language } = Astro.props;
 ---
 
-<Mobile language={language} />
-<DesktopNavigation language={language} />
+<header class="relative">
+  <a
+    href="#main"
+    class="focus-item transition-colors bg-black text-brand-white absolute p-4 bottom-[100000px] focus:-bottom-12"
+    >{navigationTranslations[language].skip}</a
+  >
+  <Mobile language={language} />
+  <DesktopNavigation language={language} />
+</header>
