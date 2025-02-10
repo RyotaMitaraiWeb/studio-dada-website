@@ -36,53 +36,53 @@ const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
     <div class="flex flex-col md:flex-row gap-8 mx-auto">
       <ContactsBox>
         <LocationIcon />
-        <h2 class="text-black font-bold text-center text-xl">
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
           {translations.address}
         </h2>
-        <p class="text-black text-base">
+        <Typography>
           {companyData[lang].address}
-        </p>
+        </Typography>
       </ContactsBox>
       <ContactsBox>
         <Phone />
-        <h2 class="text-black font-bold text-center text-xl">
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
           {translations.phone}
         </h2>
-        <p class="text-black text-base">
+        <Typography>
           <a
             class="hover:underline focus-item transition-colors"
             href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
           >
-        </p>
+        </Typography>
       </ContactsBox>
     </div>
     <div class="flex flex-col md:flex-row gap-8 mx-auto">
       <ContactsBox>
         <Email />
-        <h2 class="text-black font-bold text-center text-xl">
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
           {translations.email}
         </h2>
         <ul class="flex flex-col gap-4">
           {
             companyData.email.map((email) => (
-              <li class="text-black text-base">
+              <Typography tag="li">
                 <a
                   class="hover:underline focus-item transition-colors"
                   href={`mailto:${email}`}
                 >
                   {email}
                 </a>
-              </li>
+              </Typography>
             ))
           }
         </ul>
       </ContactsBox>
       <ContactsBox>
         <Clock />
-        <h2 class="text-black font-bold text-center text-xl">
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
           {translations.workHours}
         </h2>
-        <p class="text-black text-base">
+        <Typography>
           <time>
             {companyData.startWorkHour}
           </time>
@@ -90,7 +90,7 @@ const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
           <time>
             {companyData.endWorkHour}
           </time>
-        </p>
+        </Typography>
       </ContactsBox>
     </div>
   </div>
