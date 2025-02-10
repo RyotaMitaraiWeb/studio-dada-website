@@ -52,7 +52,7 @@ const links: Link[] = [
         links.map((link) => (
           <li class="bg-black w-full border-b-gray-400 border-b-2">
             <a
-              class="block focus-item text-brand-white p-8 text-2xl hover:underline active:no-underline"
+              class="block focus-item transition-colors text-brand-white p-8 text-2xl hover:underline active:no-underline"
               href={link.href}
             >
               {link.value}
@@ -63,7 +63,7 @@ const links: Link[] = [
       <li>
         <form method="dialog" id="close-dialog">
           <button
-            class="bg-black m-0 w-full text-left hover:underline text-brand-white focus-item p-8 text-2xl block border-b-gray-400 border-b cursor-pointer"
+            class="bg-black m-0 w-full text-left hover:underline text-brand-white focus-item transition-colors p-8 text-2xl block border-b-gray-400 border-b cursor-pointer"
             >{translations.closeButton}</button
           >
         </form>
