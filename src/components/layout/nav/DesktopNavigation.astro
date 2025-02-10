@@ -101,21 +101,3 @@ const links: Link[] = [
     </ul>
   </div>
 </nav>
-
-<script>
-  const button = document.querySelector(
-    "#open-mobile-menu"
-  ) as HTMLButtonElement;
-
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const dialog = document.querySelector(
-      "#mobile-nav-menu"
-    ) as HTMLDialogElement;
-
-    dialog.showModal();
-
-    history.pushState({ dialogOpen: true }, "");
-  });
-</script>
