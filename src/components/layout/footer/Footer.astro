@@ -39,62 +39,69 @@ const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
     {translations.copyright()}
   </Typography>
   <hr class="border-gray" />
-  <section class="flex flex-col gap-4">
-    <h2 class="font-bold text-brand-white text-xs">
-      {translations.contacts.label}
-    </h2>
-    <ul class="flex flex-col gap-4">
-      <li class="text-brand-white text-xs">
-        {translations.contacts.phoneLabel}: <a
-          class="hover:underline focus-item transition-colors"
-          href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
-        >
-      </li>
-      <li class="text-brand-white text-xs">
-        {translations.contacts.addressLabel}: {companyData[language].address} (<a
-          href="#"
-          target="_blank"
-          class="focus-item transition-colors underline hover:no-underline"
-          >{translations.viewInGoogleMaps}</a
-        >)
-      </li>
-      <li class="text-brand-white text-xs">
-        {translations.contacts.emailLabel}: {
-          companyData.email.map((email) => (
-            <span class="email-link">
+  <div class="flex flex-col gap-4 md:flex-row md:gap-12">
+    <section class="flex flex-col gap-4 md:w-1/2">
+      <h2 class="font-bold text-brand-white text-xs lg:text-xl xl:text-2xl">
+        {translations.contacts.label}
+      </h2>
+      <ul class="flex flex-col gap-4">
+        <li class="text-brand-white text-xs lg:text-base">
+          {translations.contacts.phoneLabel}: <a
+            class="hover:underline focus-item transition-colors"
+            href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
+          >
+        </li>
+        <li class="text-brand-white text-xs lg:text-base">
+          {translations.contacts.addressLabel}: {companyData[language].address} (<a
+            href="#"
+            target="_blank"
+            class="focus-item transition-colors underline hover:no-underline lg:text-base"
+            >{translations.viewInGoogleMaps}</a
+          >)
+        </li>
+        <li class="text-brand-white text-xs lg:text-base">
+          {translations.contacts.emailLabel}: {
+            companyData.email.map((email) => (
+              <span class="email-link">
+                <a
+                  class="underline focus-item transition-colors hover:no-underline"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
+              </span>
+            ))
+          }
+        </li>
+        <li class="text-brand-white text-xs lg:text-base">
+          {translations.contacts.workHoursLabel}: <time
+            >{companyData.startWorkHour}</time
+          > - <time>{companyData.endWorkHour}</time>
+        </li>
+      </ul>
+    </section>
+    <hr class="border-gray md:hidden" />
+    <section class="flex flex-col gap-4 md:w-1/2">
+      <h2 class="font-bold text-brand-white text-xs lg:text-xl xl:text-2xl">
+        {translations.menu.label}
+      </h2>
+      <ul class="flex flex-col gap-4">
+        {
+          navigationLinks.map((link) => (
+            <li class="text-xs lg:text-base">
               <a
-                class="underline focus-item transition-colors hover:no-underline"
-                href={`mailto:${email}`}
+                class="focus-item transition-colors hover:underline text-brand-white "
+                href={link.href(language)}
               >
-                {email}
+                {link[language]}
               </a>
-            </span>
+            </li>
           ))
         }
-      </li>
-      <li class="text-brand-white text-xs">
-        {translations.contacts.workHoursLabel}: <time
-          >{companyData.startWorkHour}</time
-        > - <time>{companyData.endWorkHour}</time>
-      </li>
-    </ul>
-  </section>
-  <hr class="border-gray" />
-  <section class="flex flex-col gap-4">
-    <h2 class="font-bold text-brand-white text-xs">
-      {translations.menu.label}
-    </h2>
-    <ul class="flex flex-col gap-4">
-      {
-        navigationLinks.map((link) => (
-          <li class="text-xs">
-            <a class="focus-item transition-colors hover:underline text-brand-white " href={link.href(language)}>{link[language]}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-  <p class="text-[0.625rem] text-brand-white text-end">
+      </ul>
+    </section>
+  </div>
+  <p class="text-[0.625rem] lg:text-base text-brand-white text-end">
     {translations.websiteDevelopedByLabel}
     <a
       class="text-brand-white underline hover:no-underline focus-item transition-colors"
