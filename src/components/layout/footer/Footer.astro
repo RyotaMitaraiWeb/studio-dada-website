@@ -1,0 +1,113 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { companyData } from "../../../common/companyData";
+import { navigationLinks } from "../../../common/navigation";
+import { footerTranslations } from "../../../translations/footer";
+import { imageSizes } from "../../../util/imageSizes";
+import { srcset } from "../../../util/srcset";
+import Typography from "../../common/Typography.astro";
+
+interface Props {
+  language: locale;
+}
+
+const { language } = Astro.props;
+const translations = footerTranslations[language];
+
+const src = srcset([
+  ["logo_footer_mobile.png", 288],
+  ["logo_footer_small_tablet.png", 420],
+  ["logo_footer_large_tablet.png", 546],
+  ["logo_footer_desktop.png", 650],
+]);
+
+const sizes = imageSizes([288, 420, 546, 650]);
+
+const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
+---
+
+<footer class="bg-black w-full flex flex-col gap-4 p-4">
+  <img
+    class="mx-auto block rounded"
+    loading="lazy"
+    decoding="async"
+    srcset={src}
+    sizes={sizes}
+    alt=""
+  />
+  <Typography className="text-brand-white text-center">
+    {translations.copyright()}
+  </Typography>
+  <hr class="border-gray" />
+  <section class="flex flex-col gap-4">
+    <h2 class="font-bold text-brand-white text-xs">
+      {translations.contacts.label}
+    </h2>
+    <ul class="flex flex-col gap-4">
+      <li class="text-brand-white text-xs">
+        {translations.contacts.phoneLabel}: <a
+          class="hover:underline focus-item transition-colors"
+          href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
+        >
+      </li>
+      <li class="text-brand-white text-xs">
+        {translations.contacts.addressLabel}: {companyData[language].address} (<a
+          href="#"
+          target="_blank"
+          class="focus-item transition-colors underline hover:no-underline"
+          >{translations.viewInGoogleMaps}</a
+        >)
+      </li>
+      <li class="text-brand-white text-xs">
+        {translations.contacts.emailLabel}: {
+          companyData.email.map((email) => (
+            <span class="email-link">
+              <a
+                class="underline focus-item transition-colors hover:no-underline"
+                href={`mailto:${email}`}
+              >
+                {email}
+              </a>
+            </span>
+          ))
+        }
+      </li>
+      <li class="text-brand-white text-xs">
+        {translations.contacts.workHoursLabel}: <time
+          >{companyData.startWorkHour}</time
+        > - <time>{companyData.endWorkHour}</time>
+      </li>
+    </ul>
+  </section>
+  <hr class="border-gray" />
+  <section class="flex flex-col gap-4">
+    <h2 class="font-bold text-brand-white text-xs">
+      {translations.menu.label}
+    </h2>
+    <ul class="flex flex-col gap-4">
+      {
+        navigationLinks.map((link) => (
+          <li class="text-xs">
+            <a class="focus-item transition-colors hover:underline text-brand-white " href={link.href(language)}>{link[language]}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <p class="text-[0.625rem] text-brand-white text-end">
+    {translations.websiteDevelopedByLabel}
+    <a
+      class="text-brand-white underline hover:no-underline focus-item transition-colors"
+      href="#"
+      target="_blank"
+    >
+      {translations.valentinKaradzhov}
+    </a>
+  </p>
+</footer>
+
+<style>
+  .email-link:not(:last-child)::after {
+    content: " | ";
+  }
+</style>

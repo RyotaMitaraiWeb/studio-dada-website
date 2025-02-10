@@ -11,6 +11,7 @@
 @theme {
   --color-black: #221E20;
   --color-brand-white: #e0e0e0;
+  --color-gray: #ddd;
 
   --breakpoint-sm: 320px;
   --breakpoint-md: 744px;
