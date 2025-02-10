@@ -1,0 +1,97 @@
+---
+import type { locale } from "../../assets/types/i18n";
+import { companyData } from "../../common/companyData";
+import Box from "../../components/common/Box.astro";
+import PageTitle from "../../components/common/PageTitle.astro";
+import Typography from "../../components/common/Typography.astro";
+import ContactsBox from "../../components/features/contacts/ContactsBox.astro";
+import Clock from "../../components/icons/Clock.astro";
+import Email from "../../components/icons/Email.astro";
+import LocationIcon from "../../components/icons/LocationIcon.astro";
+import Phone from "../../components/icons/Phone.astro";
+import Layout from "../../layouts/Layout.astro";
+import { contactsTranslations } from "../../translations/contacts";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "bg" as locale },
+    },
+    {
+      params: { lang: "en" as locale },
+    },
+  ];
+}
+
+const { lang } = Astro.params;
+const translations = contactsTranslations[lang];
+const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
+---
+
+<Layout language={lang}>
+  <PageTitle>
+    {translations.title}
+  </PageTitle>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col md:flex-row gap-8 mx-auto">
+      <ContactsBox>
+        <LocationIcon />
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
+          {translations.address}
+        </h2>
+        <Typography>
+          {companyData[lang].address}
+        </Typography>
+      </ContactsBox>
+      <ContactsBox>
+        <Phone />
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
+          {translations.phone}
+        </h2>
+        <Typography>
+          <a
+            class="hover:underline focus-item transition-colors"
+            href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
+          >
+        </Typography>
+      </ContactsBox>
+    </div>
+    <div class="flex flex-col md:flex-row gap-8 mx-auto">
+      <ContactsBox>
+        <Email />
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
+          {translations.email}
+        </h2>
+        <ul class="flex flex-col gap-4">
+          {
+            companyData.email.map((email) => (
+              <Typography tag="li">
+                <a
+                  class="hover:underline focus-item transition-colors"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
+              </Typography>
+            ))
+          }
+        </ul>
+      </ContactsBox>
+      <ContactsBox>
+        <Clock />
+        <h2 class="text-black font-bold text-center text-xl lg:text-2xl">
+          {translations.workHours}
+        </h2>
+        <Typography>
+          <time>
+            {companyData.startWorkHour}
+          </time>
+          -
+          <time>
+            {companyData.endWorkHour}
+          </time>
+        </Typography>
+      </ContactsBox>
+    </div>
+  </div>
+</Layout>

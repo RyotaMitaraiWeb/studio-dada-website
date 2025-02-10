@@ -1,11 +1,13 @@
 ---
 interface Props {
   className?: string;
+  tag?: keyof HTMLElementTagNameMap;
 }
 
-const { className } = Astro.props;
+const { className, tag = 'p' } = Astro.props;
+const Tag = tag;
 ---
 
-<p class:list={['text-base lg:text-xl', className]}>
+<Tag class:list={['text-base lg:text-xl text-black', className]}>
   <slot />
-</p>
+</Tag>

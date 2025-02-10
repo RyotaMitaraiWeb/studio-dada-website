@@ -1,0 +1,13 @@
+---
+interface Props {
+  tag?: keyof HTMLElementTagNameMap;
+  className?: string;
+}
+const { tag = 'div', className } = Astro.props;
+
+const Tag = tag;
+---
+
+<Tag class:list={["bg-white shadow-md border border-gray", className]}>
+  <slot />
+</Tag>
