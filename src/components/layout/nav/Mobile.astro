@@ -1,0 +1,85 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { srcset } from "../../../util/srcset";
+import { imageSizes } from "../../../util/imageSizes";
+import BurgerMenu from "../../icons/BurgerMenu.astro";
+import FlagUK from "../../icons/FlagUK.astro";
+import MobileMenu from "./MobileMenu.astro";
+import { navigationTranslations } from "../../../translations/nav";
+import FlagBulgaria from "../../icons/FlagBulgaria.astro";
+
+interface Props {
+  language: locale;
+}
+
+const { language } = Astro.props;
+
+const logos = srcset([
+  ["logo_navbar_mobile.png", 170],
+  ["logo_navbar_small_tablet.png", 250],
+]);
+
+const sizes = imageSizes([170, 250]);
+---
+
+<nav class="lg:hidden bg-black flex justify-between items-center px-2 py-4">
+  <a href={`/${language}`} class="focus-item transition-colors">
+    <img
+      class="rounded-xs"
+      srcset={logos}
+      sizes={sizes}
+      alt={navigationTranslations[language].logo}
+    />
+  </a>
+  <div class="flex items-center gap-4">
+    {
+      language === "bg" ? (
+        <a
+          href="/en"
+          class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+          aria-description="Смени на английски език / switch to English"
+        >
+          <FlagUK size={30} />
+        </a>
+      ) : (
+        <a
+          href="/en"
+          class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+          aria-description="Switch to Bulgarian / смени на български език"
+        >
+          <FlagBulgaria size={30} />
+        </a>
+      )
+    }
+    <button
+      class="focus-item p-1 cursor-pointer active:opacity-60 rounded-full motion-safe:transition-colors"
+      id="open-mobile-menu"
+      aria-description={navigationTranslations[language].openMenuButton}
+    >
+      <BurgerMenu size={36} />
+    </button>
+  </div>
+  <MobileMenu language={language} />
+</nav>
+
+<script>
+  const button = document.querySelector(
+    "#open-mobile-menu"
+  ) as HTMLButtonElement;
+
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const dialog = document.querySelector(
+      "#mobile-nav-menu"
+    ) as HTMLDialogElement;
+
+    dialog.showModal();
+  });
+</script>
+
+<style scoped>
+  #open-mobile-menu:hover {
+    background-color: rgba(224, 244, 244, 0.3);
+  }
+</style>

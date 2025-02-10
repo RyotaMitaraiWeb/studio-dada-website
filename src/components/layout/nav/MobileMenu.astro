@@ -1,0 +1,105 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { navigationTranslations } from "../../../translations/nav";
+
+interface Props {
+  language: locale;
+}
+
+type Link = {
+  value: string;
+  href: string;
+};
+
+const { language } = Astro.props;
+const translations = navigationTranslations[language];
+
+const links: Link[] = [
+  {
+    value: translations.home,
+    href: `/${language}`,
+  },
+  {
+    value: translations.catalogue,
+    href: `/${language}/catalogue`,
+  },
+  {
+    value: translations.customers,
+    href: `/${language}/customers`,
+  },
+  {
+    value: translations.portfolio,
+    href: `/${language}/portfolio`,
+  },
+  {
+    value: translations.about,
+    href: `/${language}/about`,
+  },
+  {
+    value: translations.contacts,
+    href: `/${language}/contacts`,
+  },
+];
+---
+
+<dialog
+  id="mobile-nav-menu"
+  class="w-2/3 md:w-1/2 bg-transparent overflow-visible backdrop:bg-black backdrop:opacity-60"
+>
+  <nav class="bg-black h-screen w-full overflow-y-auto">
+    <ul class="w-full">
+      {
+        links.map((link) => (
+          <li class="bg-black w-full border-b-gray-400 border-b-2">
+            <a
+              class="block focus-item transition-colors text-brand-white p-8 text-2xl hover:underline active:no-underline"
+              href={link.href}
+            >
+              {link.value}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <form method="dialog" id="close-dialog">
+          <button
+            class="bg-black m-0 w-full text-left hover:underline text-brand-white focus-item transition-colors p-8 text-2xl block border-b-gray-400 border-b cursor-pointer"
+            >{translations.closeButton}</button
+          >
+        </form>
+      </li>
+    </ul>
+  </nav>
+</dialog>
+
+<script>
+  const dialog = document.querySelector(
+    "#mobile-nav-menu"
+  ) as HTMLDialogElement;
+
+  dialog.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+</script>
+
+<style scoped>
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    nav {
+      animation: slideInFromLeft 0.4s ease-in-out both;
+    }
+  }
+</style>

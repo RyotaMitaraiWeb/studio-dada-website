@@ -1,0 +1,12 @@
+---
+interface Props {
+  size: number;
+}
+
+const { size } = Astro.props;
+---
+<svg aria-hidden="true" width={size} height={size} viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+  <rect class="fill-brand-white" rx={size * 0.0417} x={size * 0.1667} y={size * 0.2} width={size * 0.6667} height={size * 0.0833} />
+  <rect class="fill-brand-white" rx={size * 0.0417} x={size * 0.1667} y={size * 0.5} width={size * 0.6667} height={size * 0.0833} />
+  <rect class="fill-brand-white" rx={size * 0.0417} x={size * 0.1667} y={size * 0.8} width={size * 0.6667} height={size * 0.0833} />
+</svg>
