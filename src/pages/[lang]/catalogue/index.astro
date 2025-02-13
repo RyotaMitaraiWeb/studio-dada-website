@@ -2,8 +2,10 @@
 import type { locale } from "../../../assets/types/i18n";
 import { catalogue } from "../../../common/catalogue";
 import Box from "../../../components/common/Box.astro";
+import LinkButton from "../../../components/common/LinkButton.astro";
 import PageTitle from "../../../components/common/PageTitle.astro";
 import Layout from "../../../layouts/Layout.astro";
+import { catalogueTranslations } from "../../../translations/catalogue";
 import { imagesUrl } from "../../../util/imageUrl";
 
 interface Props {
@@ -29,26 +31,35 @@ const products = catalogue.map((product) => ({
   data: product[lang],
 }));
 
-console.log(products);
+const translations = catalogueTranslations[lang];
 ---
 
 <Layout language={lang}>
-  <PageTitle>Placeholder</PageTitle>
-  <ul>
+  <PageTitle>{translations.title}</PageTitle>
+  <ul
+    class="grid mx-auto gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  >
     {
       products.map((product) => (
-        <li>
-          <Box className="w-64">
+        <li class="w-64">
+          <Box className="flex flex-col w-full h-full pb-4 rounded">
             <img
               loading="lazy"
               decoding="async"
               src={imagesUrl(product.imageFileName)}
               width="256"
               height="256"
+              class="border-b border-gray mb-4"
             />
-            <div>
-              <h2>{product.data.name}</h2>
-              <a href={`/${lang}/catalogue/${product.id}`}>Placeholder</a>
+            <div class="flex flex-col gap-8 justify-between h-full px-4">
+              <h2 class="text-xl font-bold">{product.data.name}</h2>
+              <LinkButton
+                href={`/${lang}/catalogue/${product.id}`}
+                language={lang}
+                className="p-4 text-base"
+              >
+                {translations.viewMore}
+              </LinkButton>
             </div>
           </Box>
         </li>
