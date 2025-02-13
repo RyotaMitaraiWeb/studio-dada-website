@@ -1,0 +1,61 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { catalogue } from "../../../common/catalogue";
+import Box from "../../../components/common/Box.astro";
+import Typography from "../../../components/common/Typography.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { productPageTranslations } from "../../../translations/productPage";
+import { imageSizes } from "../../../util/imageSizes";
+import { imagesUrl } from "../../../util/imageUrl";
+import { srcset } from "../../../util/srcset";
+
+export async function getStaticPaths() {
+  const catalogueBg = catalogue.map((product) => ({
+    params: { lang: "bg" as locale, product: product.id },
+    props: { product },
+  }));
+
+  const catalogueEn = catalogue.map((product) => ({
+    params: { lang: "en" as locale, product: product.id },
+    props: { product },
+  }));
+
+  return [...catalogueBg, ...catalogueEn];
+}
+
+const { lang } = Astro.params;
+const { product } = Astro.props;
+
+const productData = product[lang];
+const translations = productPageTranslations[lang];
+const image = imagesUrl(product.imageFileName);
+
+const src = srcset([
+  [product.imageFileName, 500],
+  [product.imageFileName, 500],
+]);
+
+const sizes = imageSizes([288, 500]);
+---
+
+<Layout language={lang}>
+  <nav aria-label={translations.breadcrumb}>
+    <ol>
+      <Typography tag="li">
+        <a href={`/${lang}/catalogue`}>
+          {translations.catalogue}
+        </a>
+      </Typography>
+      <Typography tag="li">
+        {productData.name}
+      </Typography>
+    </ol>
+  </nav>
+  <Box tag="section">
+    <img class="aspect-square h-auto" src={image} srcset={src} sizes={sizes} alt="" />
+    <div>
+      <h1>{productData.name}</h1>
+      <p>{productData.description}</p>
+    </div>
+  </Box>
+</Layout>
