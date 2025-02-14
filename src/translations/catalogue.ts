@@ -28,7 +28,7 @@ export const catalogueTranslations = {
     },
     productOrServiceNotFound: {
       title: 'Не намирате това, което търсите?',
-      messageChunks: ['Възможностите на Студио Дада не се ограничават до описаните продукти и услуги и можем евентуално да обслужим по-нестандартни поръчки. Може да се', 'свържете с нас', ', за да обсъдим Вашия конкретен случай, за да прецените дали и с какво можем да Ви бъдем полезни.'],
+      messageChunks: ['Възможностите на Студио Дада не се ограничават до описаните продукти и услуги и можем евентуално да обслужим по-нестандартни поръчки. Може да се ', 'свържете с нас', ', за да обсъдим Вашия конкретен случай, за да прецените дали и с какво можем да Ви бъдем полезни.'],
     },
   },
   en: {
@@ -52,8 +52,8 @@ export const catalogueTranslations = {
       ] as Reason[],
     },
     productOrServiceNotFound: {
-      title: 'Не намирате това, което търсите?',
-      messageChunks: ['Възможностите на Студио Дада не се ограничават до описаните продукти и услуги и можем евентуално да обслужим по-нестандартни поръчки. Може да се', 'свържете с нас', ', за да обсъдим Вашия конкретен случай, за да прецените дали и с какво можем да Ви бъдем полезни.'],
+      title: 'Not finding what you are looking for?',
+      messageChunks: ['Studio Dada\'s capabilities are not limited to the products and services described and we can potentially take on more custom orders. ', 'You can contact us', ' to discuss your specific case to see if and how we can be of assistance.'],
     },
   }
 }

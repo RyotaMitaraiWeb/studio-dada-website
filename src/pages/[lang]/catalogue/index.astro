@@ -5,6 +5,7 @@ import Box from "../../../components/common/Box.astro";
 import LinkButton from "../../../components/common/LinkButton.astro";
 import PageTitle from "../../../components/common/PageTitle.astro";
 import Section from "../../../components/common/Section.astro";
+import Typography from "../../../components/common/Typography.astro";
 import AdvantageBox from "../../../components/features/catalogue/AdvantageBox.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { catalogueTranslations } from "../../../translations/catalogue";
@@ -34,6 +35,9 @@ const products = catalogue.map((product) => ({
 }));
 
 const translations = catalogueTranslations[lang];
+
+const [first, link, second] =
+  translations.productOrServiceNotFound.messageChunks;
 ---
 
 <Layout language={lang}>
@@ -80,5 +84,15 @@ const translations = catalogueTranslations[lang];
         ))
       }
     </ol>
+  </Section>
+  <Section title={translations.productOrServiceNotFound.title}>
+    <Typography
+      >{first} 
+      <a
+        href={`/${lang}/contacts`}
+        class="focus-item underline hover:no-underline active:underline transition-colors"
+        >{link}</a
+      >{second}</Typography
+    >
   </Section>
 </Layout>
