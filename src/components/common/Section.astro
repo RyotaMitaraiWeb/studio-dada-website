@@ -9,7 +9,7 @@ interface Props {
 const { title, className } = Astro.props;
 ---
 
-<section class:list={['bg-white w-full flex flex-col gap-8 px-4 py-4 md:px-8 lg:px-12 xl:px-24', className]}>
+<section class:list={['bg-white w-full flex flex-col gap-8 px-4 py-4 md:px-8 lg:px-12 xl:px-24 shadow-md', className]}>
   <h2 class="text-3xl lg:text-4xl text-black font-bold">{title}</h2>
   <slot />
 </section>
