@@ -13,25 +13,25 @@ export type CatalogueItem = {
 
 export const catalogue: CatalogueItem[] = [
   {
-    id: 'leaflets-brochures-catalogues-folders',
+    id: 'leaflets-brochures-catalogues-and-folders',
     bg: {
       name: 'Рекламни листовки, брошури, каталози, папки',
       description: 'Lorem ipsum dolor'
     },
     en: {
-      name: 'Advertising leaflets, brochures, catalogues, folders',
+      name: 'Advertising leaflets, brochures, catalogues, and folders',
       description: 'Lorem ipsum dolor',
     },
     imageFileName: '3D_Brown-Sugar_Box_100x4g_0922.png'
   },
   {
-    id: 'posters-showcards-wobblers-shelftalkers',
+    id: 'posters-showcards-wobblers-and-shelftalkers',
     bg: {
       name: 'Плакати, шоу карти, уоблери, шелфтокъри',
       description: 'Lorem ipsum dolor'
     },
     en: {
-      name: 'Posters, show cards, wobblers, shelftalkers',
+      name: 'Posters, show cards, wobblers, and shelftalkers',
       description: 'Lorem ipsum dolor',
     },
     imageFileName: '3D_Brown-Sugar_Box_100x4g_0922.png'
@@ -43,19 +43,19 @@ export const catalogue: CatalogueItem[] = [
       description: 'Lorem ipsum dolor'
     },
     en: {
-      name: 'Product packages (boxes, excise stamps, tags, stickers)',
+      name: 'Product packages (boxes, excise stamps, tags, and stickers)',
       description: 'Lorem ipsum dolor',
     },
     imageFileName: '3D_Brown-Sugar_Box_100x4g_0922.png'
   },
   {
-    id: 'calendars-notebooks-sacks-envelopes',
+    id: 'calendars-notebooks-sacks-and-envelopes',
     bg: {
       name: 'Календари, тефтери, торби, пликове',
       description: 'Lorem ipsum dolor'
     },
     en: {
-      name: 'Calendars, notebooks, sacks, envelopes',
+      name: 'Calendars, notebooks, sacks, and envelopes',
       description: 'Lorem ipsum dolor',
     },
     imageFileName: '3D_Brown-Sugar_Box_100x4g_0922.png'
