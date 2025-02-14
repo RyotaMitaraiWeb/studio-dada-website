@@ -2,6 +2,7 @@
 import type { locale } from "../../../assets/types/i18n";
 import { catalogue } from "../../../common/catalogue";
 import Box from "../../../components/common/Box.astro";
+import LinkButton from "../../../components/common/LinkButton.astro";
 import Typography from "../../../components/common/Typography.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { productPageTranslations } from "../../../translations/productPage";
@@ -34,28 +35,51 @@ const src = srcset([
   [product.imageFileName, 500],
   [product.imageFileName, 500],
 ]);
-
-const sizes = imageSizes([288, 500]);
 ---
 
 <Layout language={lang}>
-  <nav aria-label={translations.breadcrumb}>
-    <ol>
-      <Typography tag="li">
-        <a href={`/${lang}/catalogue`}>
+  <nav class="breadcrumb" aria-label={translations.breadcrumb}>
+    <ol class="flex flex-row gap-1 justify-center">
+      <Typography tag="li" className="h-max">
+        <a
+          href={`/${lang}/catalogue`}
+          class="text-[#1A0DAB] underline hover:no-underline active:underline"
+        >
           {translations.catalogue}
         </a>
       </Typography>
       <Typography tag="li">
-        {productData.name}
+        <span class="current-item">{productData.name}</span>
       </Typography>
     </ol>
   </nav>
-  <Box tag="section">
-    <img class="aspect-square h-auto" src={image} srcset={src} sizes={sizes} alt="" />
-    <div>
-      <h1>{productData.name}</h1>
-      <p>{productData.description}</p>
+  <Box tag="section" className="w-11/12 mx-auto flex flex-col gap-4 lg:flex-row lg:gap-0">
+    <div class="border-b w-full border-gray lg:w-1/2">
+      <img
+        loading="lazy"
+        decoding="async"
+        class="aspect-square h-auto w-full max-w-[400px] xl:max-w-[600px] block mx-auto"
+        src={image}
+        srcset={src}
+        alt=""
+      />
+    </div>
+    <div class="flex flex-col p-4 pt-0 gap-8 lg:pt-4">
+      <div class="flex flex-col gap-4">
+        <h1 class="font-bold text-2xl">{productData.name}</h1>
+        <Typography>{productData.description}</Typography>
+      </div>
+      <Typography className="italic">{translations.inquiry}:</Typography>
+      <LinkButton className="text-base p-4 lg:w-max" href={`/${lang}/contacts`}
+        >{translations.contactUs}</LinkButton
+      >
     </div>
   </Box>
 </Layout>
+
+<style scoped>
+  .current-item::before {
+    content: ">";
+    padding-right: 4px;
+  }
+</style>
