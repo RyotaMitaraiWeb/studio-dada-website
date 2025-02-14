@@ -4,6 +4,8 @@ import { catalogue } from "../../../common/catalogue";
 import Box from "../../../components/common/Box.astro";
 import LinkButton from "../../../components/common/LinkButton.astro";
 import PageTitle from "../../../components/common/PageTitle.astro";
+import Section from "../../../components/common/Section.astro";
+import AdvantageBox from "../../../components/features/catalogue/AdvantageBox.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { catalogueTranslations } from "../../../translations/catalogue";
 import { imagesUrl } from "../../../util/imageUrl";
@@ -66,4 +68,17 @@ const translations = catalogueTranslations[lang];
       ))
     }
   </ul>
+  <Section className="gap-12" title={translations.advantages.title}>
+    <ol class="flex flex-col gap-16">
+      {
+        translations.advantages.reasons.map((reason, i) => (
+          <AdvantageBox
+            reason={reason.content}
+            title={reason.title}
+            number={i + 1}
+          />
+        ))
+      }
+    </ol>
+  </Section>
 </Layout>
