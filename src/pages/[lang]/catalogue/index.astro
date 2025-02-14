@@ -1,0 +1,98 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { catalogue } from "../../../common/catalogue";
+import Box from "../../../components/common/Box.astro";
+import LinkButton from "../../../components/common/LinkButton.astro";
+import PageTitle from "../../../components/common/PageTitle.astro";
+import Section from "../../../components/common/Section.astro";
+import Typography from "../../../components/common/Typography.astro";
+import AdvantageBox from "../../../components/features/catalogue/AdvantageBox.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { catalogueTranslations } from "../../../translations/catalogue";
+import { imagesUrl } from "../../../util/imageUrl";
+
+interface Props {
+  lang: locale;
+}
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "bg" as locale },
+    },
+    {
+      params: { lang: "en" as locale },
+    },
+  ];
+}
+
+const { lang } = Astro.params;
+
+const products = catalogue.map((product) => ({
+  id: product.id,
+  imageFileName: product.imageFileName,
+  data: product[lang],
+}));
+
+const translations = catalogueTranslations[lang];
+
+const [first, link, second] =
+  translations.productOrServiceNotFound.messageChunks;
+---
+
+<Layout language={lang}>
+  <PageTitle>{translations.title}</PageTitle>
+  <ul
+    class="grid mx-auto gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  >
+    {
+      products.map((product) => (
+        <li class="w-64">
+          <Box className="flex flex-col w-full h-full pb-4 rounded">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={imagesUrl(product.imageFileName)}
+              width="256"
+              height="256"
+              class="border-b border-gray mb-4"
+            />
+            <div class="flex flex-col gap-8 justify-between h-full px-4">
+              <h2 class="text-xl font-bold">{product.data.name}</h2>
+              <LinkButton
+                href={`/${lang}/catalogue/${product.id}`}
+                language={lang}
+                className="p-4 text-base"
+              >
+                {translations.viewMore}
+              </LinkButton>
+            </div>
+          </Box>
+        </li>
+      ))
+    }
+  </ul>
+  <Section className="gap-12" title={translations.advantages.title}>
+    <ol class="flex flex-col gap-16">
+      {
+        translations.advantages.reasons.map((reason, i) => (
+          <AdvantageBox
+            reason={reason.content}
+            title={reason.title}
+            number={i + 1}
+          />
+        ))
+      }
+    </ol>
+  </Section>
+  <Section title={translations.productOrServiceNotFound.title}>
+    <Typography
+      >{first} 
+      <a
+        href={`/${lang}/contacts`}
+        class="focus-item underline hover:no-underline active:underline transition-colors"
+        >{link}</a
+      >{second}</Typography
+    >
+  </Section>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Typography from "../../common/Typography.astro";
+
+interface Props {
+  number: number;
+  reason: string;
+  title: string;
+}
+
+const { number, reason, title } = Astro.props;
+
+const size = 44;
+const sizeInPx = size + 'px';
+const paddingLeft = size + 8 + 'px'; // size + gap
+---
+
+<li class="flex flex-col gap-4">
+  <div class="flex flex-col md:flex-row gap-2">
+    <div
+      aria-hidden="true"
+      class="text-brand-white bg-black rounded-[2000px] flex items-center text-2xl justify-center p-4"
+      style={{ width: sizeInPx, height: sizeInPx }}
+    >
+      {number}
+    </div>
+
+    <h3 class="text-black text-2xl md:text-3xl font-bold">{title}</h3>
+  </div>
+
+  <div class="flex flex-row" style={{ paddingLeft }}>
+    <Typography>{reason}</Typography>
+  </div>
+</li>
