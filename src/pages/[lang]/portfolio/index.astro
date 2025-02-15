@@ -1,6 +1,8 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
+import { portfolioCategories } from "../../../common/portfolio";
 import PageTitle from "../../../components/common/PageTitle.astro";
+import CategoryCard from "../../../components/features/portfolio/CategoryCard.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { portfolioTranslations } from "../../../translations/portfolio";
 
@@ -16,7 +18,14 @@ const translations = portfolioTranslations[lang];
 ---
 
 <Layout language={lang}>
-  <section>
+  <section class="flex flex-col gap-8">
     <PageTitle>{translations.title}</PageTitle>
+    <ul>
+      {
+        portfolioCategories.map((category) => (
+          <CategoryCard category={category} language={lang} />
+        ))
+      }
+    </ul>
   </section>
 </Layout>

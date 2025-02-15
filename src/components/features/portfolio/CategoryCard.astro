@@ -1,0 +1,27 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import type { PortfolioCategory } from "../../../common/portfolio";
+import { portfolioTranslations } from "../../../translations/portfolio";
+import { imagesUrl } from "../../../util/imageUrl";
+import Box from "../../common/Box.astro";
+import LinkButton from "../../common/LinkButton.astro";
+
+interface Props {
+  category: PortfolioCategory;
+  language: locale;
+}
+
+const { category, language } = Astro.props;
+const data = category[language];
+const image = imagesUrl(category.headerImage);
+
+const translations = portfolioTranslations[language];
+---
+
+<Box tag="li" className="w-75 rounded grid grid-cols-1 place-items-center mx-auto px-2 py-4">
+  <img src={image} alt="" class="w-full" />
+  <h2 class="font-bold text-center text-3xl">{data.name}</h2>
+  <LinkButton className="p-2 text-base w-11/12" href={`/${language}/portfolio/${category.category}`}
+    >{translations.explore}</LinkButton
+  >
+</Box>
