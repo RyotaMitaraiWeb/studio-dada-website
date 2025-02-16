@@ -1,0 +1,67 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import type { PortfolioItemImage } from "../../../common/portfolio";
+import { portfolioTranslations } from "../../../translations/portfolio";
+import { imagesUrl } from "../../../util/imageUrl";
+import Box from "../../common/Box.astro";
+
+interface Props {
+  item: PortfolioItemImage;
+  language: locale;
+}
+
+const { item, language } = Astro.props;
+const data = item[language];
+
+const translations = portfolioTranslations[language];
+---
+
+<Box tag="li" className="w-75 rounded-xl shadow-2xl overflow-hidden">
+  <button
+    data-image={item.imageFileName}
+    class="focus-item w-full transition-colors cursor-pointer"
+  >
+    <figure class="relative w-full">
+      <figcaption
+        class="absolute rounded-b w-full block text-brand-white text-left px-2"
+      >
+        {data.caption}
+      </figcaption>
+      <img
+        class="max:w-62.5 max:h-62.5 mx-auto"
+        src={imagesUrl(item.imageFileName)}
+        alt=""
+      />
+    </figure>
+    <span class="screenreader-only">{translations.fullScreen}</span>
+  </button>
+</Box>
+
+<style scoped>
+  figcaption {
+    background-color: rgba(34, 30, 32, 0.8);
+    bottom: -4px;
+    z-index: 50;
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    figcaption {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    img {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  button:hover img,
+  button:focus img {
+    transform: scale(1.25);
+  }
+
+  button:hover figcaption,
+  button:focus figcaption {
+    opacity: 1;
+  }
+</style>

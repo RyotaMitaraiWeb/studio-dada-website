@@ -1,0 +1,94 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { portfolioCategories } from "../../../common/portfolio";
+import PageTitle from "../../../components/common/PageTitle.astro";
+import FullSizeImageDialog from "../../../components/features/portfolio/FullSizeImageDialog.astro";
+import PortfolioCard from "../../../components/features/portfolio/PortfolioCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { portfolioTranslations } from "../../../translations/portfolio";
+
+export async function getStaticPaths() {
+  const categoriesBg = portfolioCategories.map((category) => ({
+    params: { lang: "bg" as locale, category: category.category },
+    props: { category },
+  }));
+
+  const categoriesEn = portfolioCategories.map((category) => ({
+    params: { lang: "en" as locale, category: category.category },
+    props: { category },
+  }));
+
+  return [...categoriesBg, ...categoriesEn];
+}
+
+const { lang } = Astro.params;
+const { category } = Astro.props;
+const data = category[lang];
+const translations = portfolioTranslations[lang];
+---
+
+<Layout language={lang}>
+  <section class="flex flex-col gap-8">
+    <PageTitle>{data.name}</PageTitle>
+    <ul
+      class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto"
+    >
+      {
+        category.images.map((image) => (
+          <PortfolioCard item={image} language={lang} />
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+{
+  category.images.map((image) => (
+    <FullSizeImageDialog
+      imageFileName={image.imageFileName}
+      caption={image[lang].caption}
+      closeLabel={translations.close}
+    />
+  ))
+}
+
+<script>
+  const dialogs = document.querySelectorAll(
+    ".full-width-dialog"
+  ) as NodeListOf<HTMLDialogElement>;
+
+  for (const dialog of dialogs) {
+    dialog.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const img = dialog.querySelector("img");
+      const figcaption = dialog.querySelector("figcaption");
+      if (event.target !== img && event.target !== figcaption) {
+        dialog.close();
+      }
+    });
+  }
+  const buttons = document.querySelectorAll(
+    "[data-image]"
+  ) as NodeListOf<HTMLButtonElement>;
+  for (const button of buttons) {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const image = button.dataset.image;
+      if (image) {
+        const dialog = document.getElementById(
+          image
+        ) as HTMLDialogElement | null;
+        dialog?.showModal();
+
+        const html = document.querySelector("html") as HTMLHtmlElement;
+        // prevent main content from scrolling
+        // using fixed positioning causes a scroll to the top
+        html.style.overflow = "hidden";
+
+        dialog?.addEventListener("close", () => {
+          html.style.overflow = "auto";
+        });
+      }
+    });
+  }
+</script>

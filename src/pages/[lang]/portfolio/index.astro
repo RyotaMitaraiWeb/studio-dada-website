@@ -1,0 +1,31 @@
+---
+import type { locale } from "../../../assets/types/i18n";
+import { portfolioCategories } from "../../../common/portfolio";
+import PageTitle from "../../../components/common/PageTitle.astro";
+import CategoryCard from "../../../components/features/portfolio/CategoryCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { portfolioTranslations } from "../../../translations/portfolio";
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "bg" as locale } },
+    { params: { lang: "en" as locale } },
+  ];
+}
+
+const { lang } = Astro.params;
+const translations = portfolioTranslations[lang];
+---
+
+<Layout language={lang}>
+  <section class="flex flex-col gap-8">
+    <PageTitle>{translations.title}</PageTitle>
+    <ul class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
+      {
+        portfolioCategories.map((category) => (
+          <CategoryCard category={category} language={lang} />
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
