@@ -1,13 +1,15 @@
 ---
+import type { locale } from "../../../assets/types/i18n";
 import { imagesUrl } from "../../../util/imageUrl";
 import Close from "../../icons/Close.astro";
 
 interface Props {
   imageFileName: string;
   caption: string;
+  closeLabel: string;
 }
 
-const { imageFileName, caption } = Astro.props;
+const { imageFileName, caption, closeLabel } = Astro.props;
 ---
 
 <dialog
@@ -23,6 +25,7 @@ const { imageFileName, caption } = Astro.props;
     </figure>
     <form method="dialog">
       <button
+        aria-label={closeLabel}
         class="absolute active:opacity-70 flex items-center justify-center active:bg-brand-white rounded-full w-10 h-10 align top-0 right-0 cursor-pointer focus-item motion-safe:transition-colors text-brand-white text-4xl"
       >
         <Close />

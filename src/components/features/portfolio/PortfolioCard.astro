@@ -1,6 +1,7 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
 import type { PortfolioItemImage } from "../../../common/portfolio";
+import { portfolioTranslations } from "../../../translations/portfolio";
 import { imagesUrl } from "../../../util/imageUrl";
 import Box from "../../common/Box.astro";
 
@@ -11,6 +12,8 @@ interface Props {
 
 const { item, language } = Astro.props;
 const data = item[language];
+
+const translations = portfolioTranslations[language];
 ---
 
 <Box tag="li" className="w-75 rounded-xl shadow-2xl">
@@ -30,6 +33,7 @@ const data = item[language];
         alt=""
       />
     </figure>
+    <span class="screenreader-only">{translations.fullScreen}</span>
   </button>
 </Box>
 

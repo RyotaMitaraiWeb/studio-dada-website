@@ -5,6 +5,7 @@ import PageTitle from "../../../components/common/PageTitle.astro";
 import FullSizeImageDialog from "../../../components/features/portfolio/FullSizeImageDialog.astro";
 import PortfolioCard from "../../../components/features/portfolio/PortfolioCard.astro";
 import Layout from "../../../layouts/Layout.astro";
+import { portfolioTranslations } from "../../../translations/portfolio";
 
 export async function getStaticPaths() {
   const categoriesBg = portfolioCategories.map((category) => ({
@@ -23,12 +24,15 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const { category } = Astro.props;
 const data = category[lang];
+const translations = portfolioTranslations[lang];
 ---
 
 <Layout language={lang}>
   <section class="flex flex-col gap-8">
     <PageTitle>{data.name}</PageTitle>
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
+    <ul
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto"
+    >
       {
         category.images.map((image) => (
           <PortfolioCard item={image} language={lang} />
@@ -43,6 +47,7 @@ const data = category[lang];
     <FullSizeImageDialog
       imageFileName={image.imageFileName}
       caption={image[lang].caption}
+      closeLabel={translations.close}
     />
   ))
 }

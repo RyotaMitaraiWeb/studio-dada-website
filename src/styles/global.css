@@ -8,6 +8,15 @@
   outline: 3px solid #a3e3e3;
 }
 
+.screenreader-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 @theme {
   --color-black: #221E20;
   --color-brand-white: #e0e0e0;
