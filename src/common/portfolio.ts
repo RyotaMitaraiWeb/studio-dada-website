@@ -40,5 +40,47 @@ export const portfolioCategories: PortfolioCategory[] = [
         caption: 'Box for the "Bee Radiant" skin cream of Apivita, Dermicos',
       }
     }],
-  }
+  },
+  {
+    category: "wobblers",
+    images: [
+      {
+        imageFileName: 'talcid_1.png',
+        bg: {
+          caption: 'Уоблер за дъвки за дъвчене "Талцид", Байер'
+        },
+        en: {
+          caption: 'Wobbler for chewing gum "Talcid", Bayer'
+        }
+      }
+    ],
+    headerImage: "talcid_1.png",
+    bg: {
+      name: "Уоблери"
+    },
+    en: {
+      name: "Wobblers"
+    }
+  },
+  {
+    category: "sacks",
+    images: [
+      {
+        imageFileName: 'peugeot_bag.png',
+        bg: {
+          caption: 'Брандиран плик за Peugeot, София Франс Ауто'
+        },
+        en: {
+          caption: 'Branded bag for Peugeot, Sofia France Auto'
+        }
+      }
+    ],
+    headerImage: "peugeot_bag.png",
+    bg: {
+      name: "Пликове"
+    },
+    en: {
+      name: "Sacks and bags"
+    }
+  },
 ];
