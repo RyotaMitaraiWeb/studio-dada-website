@@ -28,7 +28,7 @@ const data = category[lang];
 <Layout language={lang}>
   <section class="flex flex-col gap-8">
     <PageTitle>{data.name}</PageTitle>
-    <ul>
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
       {
         category.images.map((image) => (
           <PortfolioCard item={image} language={lang} />
