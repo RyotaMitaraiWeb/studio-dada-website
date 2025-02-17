@@ -37,7 +37,7 @@ const paths = ["catalogue", "customers", "portfolio", "about"];
     translations.sections.map((section, i) => (
       <PageSection
         section={section}
-        order={i % 2 === 0 ? "normal" : "reverse"}
+        order={i % 2 === 0 ? "reverse" : "normal"}
         imageFileName={images[i]}
         path={paths[i]}
         language={lang}
