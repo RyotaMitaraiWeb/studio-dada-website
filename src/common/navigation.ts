@@ -10,7 +10,7 @@ export const navigationLinks: Link[] = [
   {
     bg: 'Начало',
     en: 'Home',
-    href: (language) => `/${language}/home`
+    href: (language) => `/${language}`
   },
   {
     bg: 'Каталог',
@@ -24,7 +24,7 @@ export const navigationLinks: Link[] = [
   },
   {
     bg: 'Клиенти',
-    en: 'clients',
+    en: 'Clients',
     href: (language) => `/${language}/clients`
   },
   {

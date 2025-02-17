@@ -5,18 +5,16 @@ import { imageSizes } from "../../../util/imageSizes";
 import FlagUK from "../../icons/FlagUK.astro";
 import { navigationTranslations } from "../../../translations/nav";
 import FlagBulgaria from "../../icons/FlagBulgaria.astro";
-
-type Link = {
-  value: string;
-  href: string;
-};
+import { navigationLinks } from "../../../common/navigation";
 
 interface Props {
   language: locale;
+  page: string;
 }
 
-const { language } = Astro.props;
-const translations = navigationTranslations[language];
+const { language, page } = Astro.props;
+const href = (lang: locale) => page === '' ? '/' + lang : `/${lang}/${page}`;
+
 
 const logos = srcset([
   ["logo_studio_dada.png", 1575],
@@ -26,33 +24,6 @@ const logos = srcset([
 ]);
 
 const sizes = imageSizes([170, 250, 290, 504]);
-
-const links: Link[] = [
-  {
-    value: translations.home,
-    href: `/${language}`,
-  },
-  {
-    value: translations.catalogue,
-    href: `/${language}/catalogue`,
-  },
-  {
-    value: translations.clients,
-    href: `/${language}/clients`,
-  },
-  {
-    value: translations.portfolio,
-    href: `/${language}/portfolio`,
-  },
-  {
-    value: translations.about,
-    href: `/${language}/about`,
-  },
-  {
-    value: translations.contacts,
-    href: `/${language}/contacts`,
-  },
-];
 ---
 
 <nav class="hidden bg-black lg:flex justify-between items-center p-4">
@@ -68,17 +39,19 @@ const links: Link[] = [
     {
       language === "bg" ? (
         <a
-          href="/en"
+          href={href('en')}
           class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
           aria-description="Смени на английски език / switch to English"
+          hreflang="en"
         >
           <FlagUK size={30} />
         </a>
       ) : (
         <a
-          href="/en"
+          href={href('bg')}
           class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
           aria-description="Switch to Bulgarian / смени на български език"
+          hreflang="bg"
         >
           <FlagBulgaria size={30} />
         </a>
@@ -87,13 +60,13 @@ const links: Link[] = [
 
     <ul class="flex gap-8">
       {
-        links.map((link) => (
+        navigationLinks.map((link) => (
           <li class="text-base xl:text-xl">
             <a
               class="text-brand-white hover:underline focus-item transition-colors"
-              href={link.href}
+              href={link.href(language)}
             >
-              {link.value}
+              {link[language]}
             </a>
           </li>
         ))
