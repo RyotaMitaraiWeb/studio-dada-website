@@ -1,0 +1,15 @@
+---
+import type { Customer } from '../../../common/customers'
+import Typography from '../../common/Typography.astro';
+
+interface Props {
+  customer: Customer;
+}
+
+const { customer } = Astro.props;
+---
+
+<li class="p-5 rounded-lg flex flex-col gap-4 shadow-md bg-white w-62.5">
+  <h2 class="text-xl font-bold text-black">{customer.name}</h2>
+  <p class="text-base text-black">{customer.description}</p>
+</li>

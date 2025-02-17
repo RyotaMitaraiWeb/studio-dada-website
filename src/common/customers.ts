@@ -20,18 +20,8 @@ export const customers: CustomerData[] = [
   },
   {
     bg: {
-      name: 'Байер България',
-      description: 'Представителство за България на концерна Байер АГ, производител на лекарствени продукти и препарати за растителна защита и борба с вредители'
-    },
-    en: {
-      name: 'Bayer Bulgaria',
-      description: 'Representation for Bulgaria of Bayer AG, manufacturer of pharmaceuticals and preparations for plant protection and pest control'
-    }
-  },
-  {
-    bg: {
       name: 'София Франс Ауто',
-      description: 'Представителство за България на концерна Байер АГ, производител на лекарствени продукти и препарати за растителна защита и борба с вредители'
+      description: 'Официален вносител на Peugeot, Citroen, BMW, Opel и други автомобилни марки'
     },
     en: {
       name: 'Sofia France Auto',

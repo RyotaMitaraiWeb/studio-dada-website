@@ -1,0 +1,49 @@
+---
+import type { locale } from "../../assets/types/i18n";
+import { customers } from "../../common/customers";
+import PageTitle from "../../components/common/PageTitle.astro";
+import Section from "../../components/common/Section.astro";
+import Typography from "../../components/common/Typography.astro";
+import CustomerCard from "../../components/features/customers/CustomerCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { customersTranslations } from "../../translations/customers";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "bg" as locale },
+    },
+    {
+      params: { lang: "en" as locale },
+    },
+  ];
+}
+
+const { lang } = Astro.params;
+const translations = customersTranslations[lang];
+const customersList = customers.map((customer) => customer[lang]);
+
+const [text, link] = translations.section.secondParagraphChunks;
+---
+
+<Layout language={lang}>
+  <PageTitle>
+    {translations.title}
+  </PageTitle>
+  <ul
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto p-4 gap-8"
+  >
+    {customersList.map((customer) => <CustomerCard customer={customer} />)}
+  </ul>
+  <Section title={translations.section.title}>
+    <Typography>{translations.section.firstParagraph}</Typography>
+    <Typography>
+      {text}
+      <a
+        href={`/${lang}/contacts`}
+        class="underline hover:no-underline active:underline focus-item transition-colors"
+        >{link}</a
+      >.
+    </Typography>
+  </Section>
+</Layout>
