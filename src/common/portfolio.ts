@@ -73,11 +73,38 @@ export const portfolioCategories: PortfolioCategory[] = [
         en: {
           caption: 'Branded bag for Peugeot, Sofia France Auto'
         }
-      }
+      },
+      {
+        imageFileName: 'bayer_aspirin.png',
+        bg: {
+          caption: 'Брандиран плик за Аспирин, Байер'
+        },
+        en: {
+          caption: 'Branded bag for Aspirin, Bayer'
+        }
+      },
+      {
+        imageFileName: 'iberogast_4.png',
+        bg: {
+          caption: 'Брандиран плик за Иберогаст, Байер'
+        },
+        en: {
+          caption: 'Branded bag for Iberogast, Bayer'
+        }
+      },
+      {
+        imageFileName: 'renault_bag.png',
+        bg: {
+          caption: 'Брандиран плик за Renault'
+        },
+        en: {
+          caption: 'Branded bag for Renai;t'
+        }
+      },
     ],
     headerImage: "peugeot_bag.png",
     bg: {
-      name: "Пликове"
+      name: "Пликове и торби"
     },
     en: {
       name: "Sacks and bags"
