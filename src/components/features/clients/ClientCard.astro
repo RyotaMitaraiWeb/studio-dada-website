@@ -1,0 +1,14 @@
+---
+import type { Client } from '../../../common/clients'
+
+interface Props {
+  client: Client;
+}
+
+const { client } = Astro.props;
+---
+
+<li class="p-5 rounded-lg flex flex-col gap-4 shadow-md bg-white w-62.5">
+  <h2 class="text-xl font-bold text-black">{client.name}</h2>
+  <p class="text-base text-black">{client.description}</p>
+</li>

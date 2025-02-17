@@ -1,12 +1,12 @@
 ---
 import type { locale } from "../../assets/types/i18n";
-import { customers } from "../../common/customers";
+import { clients } from "../../common/clients";
 import PageTitle from "../../components/common/PageTitle.astro";
 import Section from "../../components/common/Section.astro";
 import Typography from "../../components/common/Typography.astro";
-import CustomerCard from "../../components/features/customers/CustomerCard.astro";
+import ClientCard from "../../components/features/clients/ClientCard.astro";
 import Layout from "../../layouts/Layout.astro";
-import { customersTranslations } from "../../translations/customers";
+import { clientsTranslations } from "../../translations/clients";
 
 export async function getStaticPaths() {
   return [
@@ -20,8 +20,8 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const translations = customersTranslations[lang];
-const customersList = customers.map((customer) => customer[lang]);
+const translations = clientsTranslations[lang];
+const clientsList = clients.map((client) => client[lang]);
 
 const [text, link] = translations.section.secondParagraphChunks;
 ---
@@ -33,7 +33,7 @@ const [text, link] = translations.section.secondParagraphChunks;
   <ul
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto p-4 gap-8"
   >
-    {customersList.map((customer) => <CustomerCard customer={customer} />)}
+    {clientsList.map((client) => <ClientCard client={client} />)}
   </ul>
   <Section title={translations.section.title}>
     <Typography>{translations.section.firstParagraph}</Typography>

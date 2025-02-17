@@ -1,4 +1,4 @@
-export const customersTranslations = {
+export const clientsTranslations = {
   bg: {
     title: 'Нашите клиенти',
     section: {
@@ -8,7 +8,7 @@ export const customersTranslations = {
     },
   },
   en: {
-    title: 'Our customers',
+    title: 'Our clients',
     section: {
       title: 'Studio Dada as your partner',
       firstParagraph: 'Studio Dada serves the advertising needs of large businesses in various industries on the Bulgarian market, as well as smaller enterprises, producing and providing a variety of products and services. Studio Dada maintains long-term partnerships with its clients, some of which have lasted for more than 15 years.',

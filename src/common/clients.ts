@@ -1,13 +1,13 @@
 import type { locale } from "../assets/types/i18n";
 
-export type Customer = {
+export type Client = {
   name: string;
   description: string;
 };
 
-export type CustomerData = Record<locale, Customer>;
+export type ClientsData = Record<locale, Client>;
 
-export const customers: CustomerData[] = [
+export const clients: ClientsData[] = [
   {
     bg: {
       name: 'Байер България',

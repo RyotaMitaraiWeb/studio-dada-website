@@ -26,7 +26,7 @@ export const aboutTranslations = {
       paragraphs: {
         first: 'Studio Dada was founded nearly 25 years ago in Sofia, Bulgaria, with a clear vision - to offer high quality advertising and design services. Starting out as a graphic design and prepress studio, the company quickly expanded to include the production of printed promotional materials and packaging.',
         second: 'Over the years, we have developed our potential by integrating the production of brand materials such as labels, catalogues, and calendars. Subsequently, we added the manufacture of die-cutting tools, which allowed us to optimize production processes and increase the quality of the products offered.',
-        third: 'Following the market dynamics, we have automated and refined our work processes, adapting to the new industry requirements. Today Studio Dada has a team of 8 highly qualified specialists and a modern technological base, which allows us to meet the needs of customers with maximum efficiency.',
+        third: 'Following the market dynamics, we have automated and refined our work processes, adapting to the new industry requirements. Today Studio Dada has a team of 8 highly qualified specialists and a modern technological base, which allows us to meet the needs of clients with maximum efficiency.',
         fourth: 'Over the past 15 years, the company has been consistently included in the list of trusted partners of leading international corporations and has worked with a number of Bulgarian companies from various industries. In addition, we maintain active partnerships with dozens of companies in our sector, continuing to develop and improve to provide innovative and reliable solutions in the advertising and printing industry.',
       },
     },
