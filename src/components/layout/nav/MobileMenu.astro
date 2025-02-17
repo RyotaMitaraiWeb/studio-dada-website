@@ -1,5 +1,6 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
+import { navigationLinks } from "../../../common/navigation";
 import { navigationTranslations } from "../../../translations/nav";
 
 interface Props {
@@ -14,32 +15,7 @@ type Link = {
 const { language } = Astro.props;
 const translations = navigationTranslations[language];
 
-const links: Link[] = [
-  {
-    value: translations.home,
-    href: `/${language}`,
-  },
-  {
-    value: translations.catalogue,
-    href: `/${language}/catalogue`,
-  },
-  {
-    value: translations.clients,
-    href: `/${language}/clients`,
-  },
-  {
-    value: translations.portfolio,
-    href: `/${language}/portfolio`,
-  },
-  {
-    value: translations.about,
-    href: `/${language}/about`,
-  },
-  {
-    value: translations.contacts,
-    href: `/${language}/contacts`,
-  },
-];
+
 ---
 
 <dialog
@@ -49,13 +25,13 @@ const links: Link[] = [
   <nav class="bg-black h-screen w-full overflow-y-auto">
     <ul class="w-full">
       {
-        links.map((link) => (
+        navigationLinks.map((link) => (
           <li class="bg-black w-full border-b-gray-400 border-b-2">
             <a
               class="block focus-item transition-colors text-brand-white p-8 text-2xl hover:underline active:no-underline"
-              href={link.href}
+              href={link.href(language)}
             >
-              {link.value}
+              {link[language]}
             </a>
           </li>
         ))
