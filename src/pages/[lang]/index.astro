@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const translations = homeTranslations["bg"];
+const translations = homeTranslations[lang];
 
 const images = [
   "undraw_personal-website_kz7a.png",
