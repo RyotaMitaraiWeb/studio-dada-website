@@ -5,6 +5,7 @@ import { imageSizes } from "../../../util/imageSizes";
 import FlagUK from "../../icons/FlagUK.astro";
 import { navigationTranslations } from "../../../translations/nav";
 import FlagBulgaria from "../../icons/FlagBulgaria.astro";
+import { navigationLinks } from "../../../common/navigation";
 
 type Link = {
   value: string;
@@ -26,33 +27,6 @@ const logos = srcset([
 ]);
 
 const sizes = imageSizes([170, 250, 290, 504]);
-
-const links: Link[] = [
-  {
-    value: translations.home,
-    href: `/${language}`,
-  },
-  {
-    value: translations.catalogue,
-    href: `/${language}/catalogue`,
-  },
-  {
-    value: translations.clients,
-    href: `/${language}/clients`,
-  },
-  {
-    value: translations.portfolio,
-    href: `/${language}/portfolio`,
-  },
-  {
-    value: translations.about,
-    href: `/${language}/about`,
-  },
-  {
-    value: translations.contacts,
-    href: `/${language}/contacts`,
-  },
-];
 ---
 
 <nav class="hidden bg-black lg:flex justify-between items-center p-4">
@@ -87,13 +61,13 @@ const links: Link[] = [
 
     <ul class="flex gap-8">
       {
-        links.map((link) => (
+        navigationLinks.map((link) => (
           <li class="text-base xl:text-xl">
             <a
               class="text-brand-white hover:underline focus-item transition-colors"
-              href={link.href}
+              href={link.href(language)}
             >
-              {link.value}
+              {link[language]}
             </a>
           </li>
         ))

@@ -24,7 +24,7 @@ export const navigationLinks: Link[] = [
   },
   {
     bg: 'Клиенти',
-    en: 'clients',
+    en: 'Clients',
     href: (language) => `/${language}/clients`
   },
   {
