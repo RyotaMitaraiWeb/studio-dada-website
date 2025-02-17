@@ -1,25 +1,47 @@
 ---
-import {homeTranslations} from '../../assets/translations/home';
-import type {locale} from '../../assets/types/i18n';
-import Layout from '../../layouts/Layout.astro';
+import type { locale } from "../../assets/types/i18n";
+import { homeTranslations } from "../../translations/home";
+import Typography from "../../components/common/Typography.astro";
+import Layout from "../../layouts/Layout.astro";
+import PageTitle from "../../components/common/PageTitle.astro";
+import PageSection from "../../components/features/home/PageSection.astro";
 
-export async function getStaticPaths () {
-
-    return [
-        {
-            params: {lang: 'bg'}
-        },
-        {
-            params: {lang: 'en'}
-        }
-    ];
-
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "bg" as locale },
+    },
+    {
+      params: { lang: "en" as locale },
+    },
+  ];
 }
 
-const {lang} = Astro.params;
-const translations = homeTranslations[lang as locale];
----
-<Layout>
-    <h1>{translations.heading}</h1>
-</Layout>
+const { lang } = Astro.params;
+const translations = homeTranslations["bg"];
 
+const images = [
+  "undraw_personal-website_kz7a.png",
+  "undraw_collaborators_rgw4.png",
+  "undraw_online-gallery_dljd.png",
+  "undraw_about-me_5990.png",
+];
+
+const paths = ["catalogue", "customers", "portfolio", "about"];
+---
+
+<Layout language={lang}>
+  <PageTitle>{translations.title}</PageTitle>
+  <Typography className="p-4">{translations.introduction}</Typography>
+  {
+    translations.sections.map((section, i) => (
+      <PageSection
+        section={section}
+        order={i % 2 === 0 ? "reverse" : "normal"}
+        imageFileName={images[i]}
+        path={paths[i]}
+        language={lang}
+      />
+    ))
+  }
+</Layout>
