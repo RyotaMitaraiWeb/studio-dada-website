@@ -15,7 +15,7 @@ export const customers: CustomerData[] = [
     },
     en: {
       name: 'Bayer Bulgaria',
-      description: 'Representation for Bulgaria of Bayer AG, manufacturer of pharmaceuticals and preparations for plant protection and pest control'
+      description: 'Representation for Bulgaria of Bayer AG, manufacturer of pharmaceutical products and preparations for plant protection and pest control'
     }
   },
   {
