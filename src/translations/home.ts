@@ -37,11 +37,11 @@ export const homeTranslations = {
       {
         title: 'Trusted partner of various companies',
         text: 'We are a long-standing partner of leading companies in almost all market sectors, especially in the fields of the pharmaceutics and cosmetics, automotive and auto parts import and sales, agriculture, and food and beverages, among others',
-        buttonText: 'Meet our customers',
+        buttonText: 'Meet our clients',
       },
       {
         title: 'Portfolio',
-        text: 'Take a look at real designs, packages, and other products we have developed for our customers.',
+        text: 'Take a look at real designs, packages, and other products we have developed for our clients.',
         buttonText: 'Browse our works'
       },
       {

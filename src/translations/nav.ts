@@ -2,7 +2,7 @@ export const navigationTranslations = {
   bg: {
     home: 'Начало',
     catalogue: 'Каталог',
-    customers: 'Клиенти',
+    clients: 'Клиенти',
     portfolio: 'Портфолио',
     about: 'За нас',
     contacts: 'Контакти',
@@ -14,7 +14,7 @@ export const navigationTranslations = {
   en: {
     home: 'Home',
     catalogue: 'Catalogue',
-    customers: 'Customers',
+    clients: 'clients',
     portfolio: 'Portfolio',
     about: 'About us',
     contacts: 'Contacts',
