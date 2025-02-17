@@ -2,6 +2,13 @@
 import "../styles/global.css";
 import Navigation from "../components/layout/nav/Navigation.astro";
 import Footer from "../components/layout/footer/Footer.astro";
+import type { locale } from "../assets/types/i18n";
+
+interface Props {
+  language: locale;
+}
+
+const { language } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,11 +21,11 @@ import Footer from "../components/layout/footer/Footer.astro";
     <title>Astro Basics</title>
   </head>
   <body>
-    <Navigation language="bg" />
+    <Navigation language={language} />
     <main id="main">
       <slot />
     </main>
-    <Footer language="bg" />
+    <Footer language={language} />
   </body>
 </html>
 
