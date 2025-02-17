@@ -1,0 +1,41 @@
+---
+import type { locale } from "../../assets/types/i18n";
+import PageTitle from "../../components/common/PageTitle.astro";
+import Section from "../../components/common/Section.astro";
+import Typography from "../../components/common/Typography.astro";
+import Layout from "../../layouts/Layout.astro";
+import { aboutTranslations } from "../../translations/about";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "bg" as locale },
+    },
+    {
+      params: { lang: "en" as locale },
+    },
+  ];
+}
+
+const { lang } = Astro.params;
+const translations = aboutTranslations[lang];
+
+const { history, missionAndValues } = translations;
+---
+
+<Layout language={lang}>
+  <PageTitle>{translations.title}</PageTitle>
+  <div>
+    <Section title={history.title}>
+      <Typography>{history.paragraphs.first}</Typography>
+      <Typography>{history.paragraphs.second}</Typography>
+      <Typography>{history.paragraphs.third}</Typography>
+      <Typography>{history.paragraphs.fourth}</Typography>
+    </Section>
+    <Section title={missionAndValues.title}>
+      <Typography>{missionAndValues.paragraphs.first}</Typography>
+      <Typography>{missionAndValues.paragraphs.second}</Typography>
+      <Typography>{missionAndValues.paragraphs.third}</Typography>
+    </Section>
+  </div>
+</Layout>
