@@ -8,6 +8,7 @@ type Reason = {
 export const catalogueTranslations = {
   bg: {
     title: 'Продукти и услуги',
+    metaDescription: 'Разгледайте широкият ни набор от рекламни продукти и услуги, които предлагаме с високо качество, кратки срокове и възможност на персонализиране на продукцията',
     viewMore: 'Виж повече',
     advantages: {
       title: 'Защо да изберете продуктите и услугите на Студио Дада',
@@ -33,6 +34,7 @@ export const catalogueTranslations = {
   },
   en: {
     title: 'Products and services',
+    metaDescription: 'Explore our wide range of advertising products and services that we offer with high quality, short lead times and the ability to customize products.',
     viewMore: 'Learn more',
     advantages: {
       title: 'Why choose Studio Dada\'s products and services',
@@ -53,7 +55,7 @@ export const catalogueTranslations = {
     },
     productOrServiceNotFound: {
       title: 'Not finding what you are looking for?',
-      messageChunks: ['Studio Dada\'s capabilities are not limited to the products and services described and we can potentially take on more custom orders. ', 'You can contact us', ' to discuss your specific case to see if and how we can be of assistance.'],
+      messageChunks: ['Studio Dada\'s capabilities are not limited to the products and services described and we can potentially take on more custom orders. ', 'You can contact us', ' to discuss your specific case to see if and how we can be of assistance'],
     },
   }
 }
