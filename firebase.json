@@ -8,6 +8,48 @@
     ],
     "frameworksBackend": {
       "region": "europe-west1"
-    }
+    },
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/bg",
+        "type": 301
+      },
+      {
+        "source": "/about",
+        "destination": "/bg/about",
+        "type": 301
+      },
+      {
+        "source": "/contacts",
+        "destination": "/bg/contacts",
+        "type": 301
+      },
+      {
+        "source": "/catalogue",
+        "destination": "/bg/catalogue",
+        "type": 301
+      },
+      {
+        "source": "/catalogue/:path",
+        "destination": "/bg/contacts/:path",
+        "type": 301
+      },
+      {
+        "source": "/portfolio",
+        "destination": "/bg/portfolio",
+        "type": 301
+      },
+      {
+        "source": "/portfolio/:path",
+        "destination": "/bg/portfolio/:path/",
+        "type": 301
+      },
+      {
+        "source": "/clients",
+        "destination": "/bg/clients",
+        "type": 301
+      }
+    ]
   }
 }
