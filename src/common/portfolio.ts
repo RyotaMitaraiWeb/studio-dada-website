@@ -31,15 +31,44 @@ export const portfolioCategories: PortfolioCategory[] = [
     en: {
       name: "Packages"
     },
-    images: [{
-      imageFileName: 'apivita_bee_radiant_cream_box.png',
-      bg: {
-        caption: 'Кутия за крем за кожа "Bee Radiant" на Apivita, Дермикос',
+    images: [
+      {
+        imageFileName: 'apivita_bee_radiant_cream_box.png',
+        bg: {
+          caption: 'Кутия за крем за кожа "Bee Radiant" на APIVITA, Дермикос',
+        },
+        en: {
+          caption: 'Box for the "Bee Radiant" skin cream of APIVITA, Dermicos',
+        }
       },
-      en: {
-        caption: 'Box for the "Bee Radiant" skin cream of Apivita, Dermicos',
+      {
+        imageFileName: '3D_Brown-Sugar_Box_100x4g_0922.png',
+        bg: {
+          caption: 'Кутия за кафява захар, Нико',
+        },
+        en: {
+          caption: 'Box for brown sugar, Niko',
+        },
+      },
+      {
+        imageFileName: 'isdin_detox_beauty_box.png',
+        bg: {
+          caption: 'Кутия за ISDIN Detox Beauty, Дермикос',
+        },
+        en: {
+          caption: 'Box for ISDIN Detox Beauty, Dermicos',
+        },
+      },
+      {
+        imageFileName: 'apivita_beevine_elixir.png',
+        bg: {
+          caption: 'Кутия за "Beevine Elixir", APIVITA, Дермикос',
+        },
+        en: {
+          caption: 'Box for "Beevine Elixir", APIVITA, Dermicos',
+        },
       }
-    }],
+    ],
   },
   {
     category: "wobblers",
@@ -73,11 +102,38 @@ export const portfolioCategories: PortfolioCategory[] = [
         en: {
           caption: 'Branded bag for Peugeot, Sofia France Auto'
         }
-      }
+      },
+      {
+        imageFileName: 'bayer_aspirin.png',
+        bg: {
+          caption: 'Брандиран плик за Аспирин, Байер'
+        },
+        en: {
+          caption: 'Branded bag for Aspirin, Bayer'
+        }
+      },
+      {
+        imageFileName: 'iberogast_4.png',
+        bg: {
+          caption: 'Брандиран плик за Иберогаст, Байер'
+        },
+        en: {
+          caption: 'Branded bag for Iberogast, Bayer'
+        }
+      },
+      {
+        imageFileName: 'renault_bag.png',
+        bg: {
+          caption: 'Брандиран плик за Renault'
+        },
+        en: {
+          caption: 'Branded bag for Renai;t'
+        }
+      },
     ],
     headerImage: "peugeot_bag.png",
     bg: {
-      name: "Пликове"
+      name: "Пликове и торби"
     },
     en: {
       name: "Sacks and bags"
