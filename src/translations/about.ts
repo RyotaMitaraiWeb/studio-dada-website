@@ -1,6 +1,7 @@
 export const aboutTranslations = {
   bg: {
     title: 'За нас',
+    metaDescription: 'Научете повече за мисията и ценностите на Студио Дада, формирани на базата на повече от 25 години опит в рекламната индустрия.',
     history: {
       title: 'Нашата история',
       paragraphs: {
@@ -21,6 +22,7 @@ export const aboutTranslations = {
   },
   en: {
     title: 'About',
+    metaDescription: 'Learn more about Studio Dada\'s mission and values, formed from more than 25 years of experience in the advertising industry.',
     history: {
       title: 'Our history',
       paragraphs: {

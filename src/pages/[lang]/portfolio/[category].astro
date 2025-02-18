@@ -1,5 +1,6 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
+import { companyData } from "../../../common/companyData";
 import { portfolioCategories } from "../../../common/portfolio";
 import PageTitle from "../../../components/common/PageTitle.astro";
 import FullSizeImageDialog from "../../../components/features/portfolio/FullSizeImageDialog.astro";
@@ -25,9 +26,15 @@ const { lang } = Astro.params;
 const { category } = Astro.props;
 const data = category[lang];
 const translations = portfolioTranslations[lang];
+
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout
+  title={`${data.name} | ${companyName}`}
+  metaDescription=""
+  language={lang}
+>
   <section class="flex flex-col gap-8">
     <PageTitle>{data.name}</PageTitle>
     <ul

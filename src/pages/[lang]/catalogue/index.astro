@@ -10,6 +10,7 @@ import AdvantageBox from "../../../components/features/catalogue/AdvantageBox.as
 import Layout from "../../../layouts/Layout.astro";
 import { catalogueTranslations } from "../../../translations/catalogue";
 import { imagesUrl } from "../../../util/imageUrl";
+import { companyData } from "../../../common/companyData";
 
 interface Props {
   lang: locale;
@@ -38,9 +39,15 @@ const translations = catalogueTranslations[lang];
 
 const [first, link, second] =
   translations.productOrServiceNotFound.messageChunks;
+
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout
+  title={`${translations.title} | ${companyName}`}
+  metaDescription={translations.metaDescription}
+  language={lang}
+>
   <PageTitle>{translations.title}</PageTitle>
   <ul
     class="grid mx-auto gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
@@ -87,7 +94,7 @@ const [first, link, second] =
   </Section>
   <Section title={translations.productOrServiceNotFound.title}>
     <Typography
-      >{first} 
+      >{first}
       <a
         href={`/${lang}/contacts`}
         class="focus-item underline hover:no-underline active:underline transition-colors"

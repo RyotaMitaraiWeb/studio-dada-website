@@ -1,5 +1,6 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
+import { companyData } from "../../../common/companyData";
 import { portfolioCategories } from "../../../common/portfolio";
 import PageTitle from "../../../components/common/PageTitle.astro";
 import CategoryCard from "../../../components/features/portfolio/CategoryCard.astro";
@@ -15,9 +16,15 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const translations = portfolioTranslations[lang];
+
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout
+  title={`${translations.title} | ${companyName}`}
+  metaDescription={translations.metaDescription}
+  language={lang}
+>
   <section class="flex flex-col gap-8">
     <PageTitle>{translations.title}</PageTitle>
     <ul class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">

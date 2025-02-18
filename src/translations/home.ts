@@ -1,6 +1,7 @@
 export const homeTranslations = {
   bg: {
     title: 'Рекламна агенция Студио Дада',
+    metaDescription: 'Студио Дада е рекламна агенция с повече от 25 години опит в рекламната индустрия, която предлага широка гама от рекламни продукти и услуги',
     introduction: 'Ние сме агенция с над 25 години опит в рекламната индустрия в България. Ние предлагаме цялостни решения за печатна и дигитална реклама и комбинираме креативност и иновации, за да помогнем на бизнеса да комуникира ефективно своята идентичност. Нашият фокус е в качеството, надеждността и персонализирания подход към всеки клиент.',
     sections: [
       {
@@ -27,6 +28,7 @@ export const homeTranslations = {
   },
   en: {
     title: 'Advertising agency Studio Dada',
+    metaDescription: 'Studio Dada is an advertising agency with more than 25 years of experience in the advertising industry, offering a wide range of advertising products and services',
     introduction: 'We are an agency with over 25 years of experience in the advertising industry in Bulgaria. We offer complete print and digital advertising solutions and combine creativity and innovation to help businesses communicate their identity effectively. Our focus is on quality, reliability and a personalized approach to each client.',
     sections: [
       {

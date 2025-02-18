@@ -1,6 +1,7 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
 import { catalogue } from "../../../common/catalogue";
+import { companyData } from "../../../common/companyData";
 import Box from "../../../components/common/Box.astro";
 import LinkButton from "../../../components/common/LinkButton.astro";
 import Typography from "../../../components/common/Typography.astro";
@@ -35,9 +36,11 @@ const src = srcset([
   [product.imageFileName, 500],
   [product.imageFileName, 500],
 ]);
+
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout title={`${productData.name} | ${companyName}`} metaDescription="" language={lang}>
   <nav class="breadcrumb italic p-4" aria-label={translations.breadcrumb}>
     <ol class="flex flex-row gap-1 justify-center">
       <Typography tag="li" className="h-max">

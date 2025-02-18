@@ -26,9 +26,14 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const translations = contactsTranslations[lang];
 const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout
+  title={`${translations.title} | ${companyName}`}
+  metaDescription={translations.metaDescription}
+  language={lang}
+>
   <PageTitle>
     {translations.title}
   </PageTitle>

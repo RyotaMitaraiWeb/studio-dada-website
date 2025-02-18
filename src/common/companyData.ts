@@ -5,8 +5,10 @@ export const companyData = {
   endWorkHour: '17:00',
   bg: {
     address: 'ж.к. Яворов, бл. 1, ап. 1, София 1504, България',
+    name: 'Студио Дада',
   },
   en: {
     address: 'Yavorov, block 1, apartment 1, Sofia 1504, Bulgaria',
+    name: 'Studio Dada',
   }
 }
