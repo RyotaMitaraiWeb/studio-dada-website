@@ -30,7 +30,11 @@ const images = [
 const paths = ["catalogue", "clients", "portfolio", "about"];
 ---
 
-<Layout language={lang}>
+<Layout
+  title={translations.metaDescription}
+  metaDescription={translations.metaDescription}
+  language={lang}
+>
   <PageTitle>{translations.title}</PageTitle>
   <Typography className="p-4">{translations.introduction}</Typography>
   {

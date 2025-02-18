@@ -1,6 +1,7 @@
 ---
 import type { locale } from "../../assets/types/i18n";
 import { clients } from "../../common/clients";
+import { companyData } from "../../common/companyData";
 import PageTitle from "../../components/common/PageTitle.astro";
 import Section from "../../components/common/Section.astro";
 import Typography from "../../components/common/Typography.astro";
@@ -24,9 +25,14 @@ const translations = clientsTranslations[lang];
 const clientsList = clients.map((client) => client[lang]);
 
 const [text, link] = translations.section.secondParagraphChunks;
+const companyName = companyData[lang].name;
 ---
 
-<Layout language={lang}>
+<Layout
+  title={`${translations.title} | ${companyName}`}
+  metaDescription={translations.metaDescription}
+  language={lang}
+>
   <PageTitle>
     {translations.title}
   </PageTitle>
