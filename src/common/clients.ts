@@ -71,7 +71,7 @@ export const clients: ClientsData[] = [
   {
     bg: {
       name: 'TotalEnergies Bulgaria',
-      description: 'Представителство за България на концерна Байер АГ, производител на лекарствени продукти и препарати за растителна защита и борба с вредители'
+      description: 'Производител на двигателни и трансмисионни масла и смазочни материали за двигатели (представителство за България)'
     },
     en: {
       name: 'TotalEnergies Bulgaria',
@@ -81,7 +81,7 @@ export const clients: ClientsData[] = [
   {
     bg: {
       name: 'RENAULT-DACIA Group Bulgaria',
-      description: 'Представителство за България на концерна Байер АГ, производител на лекарствени продукти и препарати за растителна защита и борба с вредители'
+      description: 'Официален представител за България на концерна RENAULT-DACIA Group'
     },
     en: {
       name: 'RENAULT-DACIA Group Bulgaria',
