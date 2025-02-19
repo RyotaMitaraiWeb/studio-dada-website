@@ -13,7 +13,7 @@ const { hreflang, language, className, ...props } = Astro.props;
 <a
   {...props}
   class:list={[
-    "bg-black text-brand-white border border-black rounded inline-flex justify-center items-center hover:bg-white hover:text-black hover:border-black focus-item motion-safe:transition-colors cursor-pointer active:underline",
+    "bg-black text-brand-white border border-black rounded inline-flex justify-center items-center hover:bg-white focus:bg-white active:bg-white hover:text-black focus:text-black active:text-black hover:border-black focus-item motion-safe:transition-colors cursor-pointer active:underline",
     className,
   ]}
   hreflang={hreflang || language}
