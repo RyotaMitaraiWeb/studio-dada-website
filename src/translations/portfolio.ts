@@ -4,13 +4,15 @@ export const portfolioTranslations = {
     metaDescription: 'Разгледайте реални опаковки, уоблери и торбички, които сме разработили за нашите клиенти',
     explore: 'Разгледай',
     close: 'Затвори модала',
-    fullScreen: 'Натисни за отваряне на изображението на пълен екран'
+    fullScreen: 'Натисни за отваряне на изображението на пълен екран',
+    backToIndex: 'Обратно към портфолиото',
   },
   en: {
     title: 'Portfolio',
     metaDescription: 'Take a look at real packages, wobblers, and bags we have developed for our clients',
     explore: 'Explore',
     close: 'Close the modal',
-    fullScreen: 'Click to open the image in full screen'
+    fullScreen: 'Click to open the image in full screen',
+    backToIndex: 'Back to portfolio index',
   },
 }

@@ -3,6 +3,7 @@ import type { locale } from "../../../assets/types/i18n";
 import { companyData } from "../../../common/companyData";
 import { portfolioCategories } from "../../../common/portfolio";
 import PageTitle from "../../../components/common/PageTitle.astro";
+import Typography from "../../../components/common/Typography.astro";
 import FullSizeImageDialog from "../../../components/features/portfolio/FullSizeImageDialog.astro";
 import PortfolioCard from "../../../components/features/portfolio/PortfolioCard.astro";
 import Layout from "../../../layouts/Layout.astro";
@@ -46,6 +47,7 @@ const companyName = companyData[lang].name;
         ))
       }
     </ul>
+    <a href={`/${lang}/portfolio`} class="text-[#1A0DAB] underline hover:no-underline active:underline w-max mx-auto">{translations.backToIndex}</a>
   </section>
 </Layout>
 
