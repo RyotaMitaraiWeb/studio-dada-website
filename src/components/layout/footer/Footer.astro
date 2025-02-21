@@ -53,7 +53,7 @@ const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
         </li>
         <li class="text-brand-white text-xs lg:text-base">
           {translations.contacts.addressLabel}: {companyData[language].address} (<a
-            href="#"
+            href={companyData.googleMapsUrl}
             target="_blank"
             class="focus-item transition-colors underline hover:no-underline lg:text-base"
             >{translations.viewInGoogleMaps}</a
@@ -105,7 +105,7 @@ const phoneNumber = companyData.phoneNumber.replaceAll(" ", "");
     {translations.websiteDevelopedByLabel}
     <a
       class="text-brand-white underline hover:no-underline focus-item transition-colors"
-      href="#"
+      href="https://ryotamitaraiweb.github.io/Valentin-Karadzhov"
       target="_blank"
     >
       {translations.valentinKaradzhov}

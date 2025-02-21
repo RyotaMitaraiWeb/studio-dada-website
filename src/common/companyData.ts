@@ -3,6 +3,7 @@ export const companyData = {
   email: ['studio.dada.bg@gmail.com', 'studiodada@mail.bg'],
   startWorkHour: '09:00',
   endWorkHour: '17:00',
+  googleMapsUrl: 'https://maps.app.goo.gl/AKAUCirjaWmHSqvR9',
   bg: {
     address: 'ж.к. Яворов, бл. 1, ап. 1, София 1504, България',
     name: 'Студио Дада',

@@ -4,7 +4,7 @@ export const footerTranslations = {
     copyright: () => `Студио Дада ЕООД @ ${new Date().getFullYear()}. Този сайт не използва бисквитки`,
     websiteDevelopedByLabel: 'Уебсайт разработен от',
     valentinKaradzhov: 'Валентин Караджов',
-    viewInGoogleMaps: 'Виж в Google Maps',
+    viewInGoogleMaps: 'виж в Google Maps',
     contacts: {
       label: 'Контакти',
       addressLabel: 'Адрес',
