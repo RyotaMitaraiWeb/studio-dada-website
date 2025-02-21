@@ -5,7 +5,8 @@ export const portfolioTranslations = {
     explore: 'Разгледай',
     close: 'Затвори модала',
     fullScreen: 'Натисни за отваряне на изображението на пълен екран',
-    backToIndex: 'Обратно към портфолиото',
+    backToIndex: 'Обратно към портфолиото',,
+    fullScreenTooltip: 'Виж на пълен екран',
   },
   en: {
     title: 'Portfolio',
@@ -13,6 +14,7 @@ export const portfolioTranslations = {
     explore: 'Explore',
     close: 'Close the modal',
     fullScreen: 'Click to open the image in full screen',
-    backToIndex: 'Back to portfolio index',
+    backToIndex: 'Back to portfolio index',,
+    fullScreenTooltip: 'View in full screen',
   },
 }
