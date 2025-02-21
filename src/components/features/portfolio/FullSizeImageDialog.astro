@@ -1,6 +1,7 @@
 ---
 import type { locale } from "../../../assets/types/i18n";
 import { imagesUrl } from "../../../util/imageUrl";
+import Dialog from "../../common/Dialog.astro";
 import Close from "../../icons/Close.astro";
 
 interface Props {
@@ -12,8 +13,8 @@ interface Props {
 const { imageFileName, caption, closeLabel } = Astro.props;
 ---
 
-<dialog
-  class="full-width-dialog fixed top-0 backdrop:bg-black backdrop:opacity-90 bg-transparent w-screen h-screen mx-auto overflow-hidden"
+<Dialog
+  className="full-width-dialog fixed top-0 backdrop:bg-black backdrop:opacity-90 bg-transparent w-screen h-max mx-auto overflow-hidden"
   id={imageFileName}
 >
   <div class="h-full overflow-auto">
@@ -32,7 +33,7 @@ const { imageFileName, caption, closeLabel } = Astro.props;
       </button>
     </form>
   </div>
-</dialog>
+</Dialog>
 
 <style scoped>
   @keyframes jumpIn {

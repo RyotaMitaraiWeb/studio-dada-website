@@ -62,20 +62,7 @@ const companyName = companyData[lang].name;
 }
 
 <script>
-  const dialogs = document.querySelectorAll(
-    ".full-width-dialog"
-  ) as NodeListOf<HTMLDialogElement>;
-
-  for (const dialog of dialogs) {
-    dialog.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const img = dialog.querySelector("img");
-      const figcaption = dialog.querySelector("figcaption");
-      if (event.target !== img && event.target !== figcaption) {
-        dialog.close();
-      }
-    });
-  }
+import { openDialog } from "../../../util/openDialog";
   const buttons = document.querySelectorAll(
     "[data-image]"
   ) as NodeListOf<HTMLButtonElement>;
@@ -87,16 +74,10 @@ const companyName = companyData[lang].name;
         const dialog = document.getElementById(
           image
         ) as HTMLDialogElement | null;
-        dialog?.showModal();
-
-        const html = document.querySelector("html") as HTMLHtmlElement;
-        // prevent main content from scrolling
-        // using fixed positioning causes a scroll to the top
-        html.style.overflow = "hidden";
-
-        dialog?.addEventListener("close", () => {
-          html.style.overflow = "auto";
-        });
+        
+        if (dialog) {
+          openDialog(dialog);
+        }
       }
     });
   }
