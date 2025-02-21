@@ -21,7 +21,7 @@ export const footerTranslations = {
     copyright: () => `Studio Dada LTD @ ${new Date().getFullYear()}. This site does not use cookies`,
     websiteDevelopedByLabel: 'Website developed by',
     valentinKaradzhov: 'Valentin Karadzhov',
-    viewInGoogleMaps: 'view in Google Maps',
+    viewInGoogleMaps: 'View in Google Maps',
     contacts: {
       label: 'Contacts',
       phoneLabel: 'Phone number',
