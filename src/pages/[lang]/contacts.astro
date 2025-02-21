@@ -11,6 +11,7 @@ import LocationIcon from "../../components/icons/LocationIcon.astro";
 import Phone from "../../components/icons/Phone.astro";
 import Layout from "../../layouts/Layout.astro";
 import { contactsTranslations } from "../../translations/contacts";
+import { footerTranslations } from "../../translations/footer";
 
 export async function getStaticPaths() {
   return [
@@ -46,6 +47,12 @@ const companyName = companyData[lang].name;
         </h2>
         <Typography>
           {companyData[lang].address}
+          (<a
+            href={companyData.googleMapsUrl}
+            target="_blank"
+            class="focus-item transition-colors underline hover:no-underline active:no-underline"
+            >{footerTranslations[lang].viewInGoogleMaps}</a
+          >)
         </Typography>
       </ContactsBox>
       <ContactsBox>
