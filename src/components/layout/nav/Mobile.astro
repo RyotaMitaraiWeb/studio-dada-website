@@ -70,6 +70,8 @@ const sizes = imageSizes([170, 250]);
 </nav>
 
 <script>
+import { openDialog } from "../../../util/openDialog";
+
   const button = document.querySelector(
     "#open-mobile-menu"
   ) as HTMLButtonElement;
@@ -78,17 +80,9 @@ const sizes = imageSizes([170, 250]);
     "#mobile-nav-menu"
   ) as HTMLDialogElement;
 
-  const html = document.querySelector("html")!;
-
   button.addEventListener("click", (event) => {
     event.preventDefault();
-
-    dialog.showModal();
-    html.style.overflow = "hidden";
-  });
-
-  dialog.addEventListener("close", () => {
-    html.style.overflow = "auto";
+    openDialog(dialog);
   });
 </script>
 

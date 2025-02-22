@@ -1,0 +1,37 @@
+---
+interface Props {
+  className?: string;
+  id?: string;
+}
+
+const { className, id } = Astro.props;
+---
+
+<dialog id={id} class:list={["", className]}>
+  <slot />
+</dialog>
+
+<script>
+  const dialogs = document.querySelectorAll("dialog");
+
+  for (const dialog of dialogs) {
+    dialog.addEventListener("close", () => {
+      const html = document.querySelector('html');
+      if (history.state?.dialogOpen) {
+        history.back();
+      }
+      
+      if (html) {
+        html.style.overflow = 'auto';
+      }
+    });
+
+    dialog.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  }
+</script>
