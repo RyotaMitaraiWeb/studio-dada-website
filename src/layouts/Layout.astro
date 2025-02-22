@@ -32,6 +32,15 @@ const { language, title, metaDescription } = Astro.props;
   </body>
 </html>
 
+<script>
+  window.addEventListener('popstate', (e) => {
+    const dialog = document.querySelector('dialog[open]') as HTMLDialogElement | null;
+    if (dialog) {
+      dialog.close();
+    }
+  });
+</script>
+
 <style>
   html,
   body {

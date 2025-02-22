@@ -5,4 +5,6 @@ export function openDialog(dialog: HTMLDialogElement) {
   if (html) {
     html.style.overflow = 'hidden';
   }
+
+  history.pushState({ dialogOpen: true }, '');
 }
