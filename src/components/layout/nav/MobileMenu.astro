@@ -3,6 +3,7 @@ import type { locale } from "../../../assets/types/i18n";
 import { navigationLinks } from "../../../common/navigation";
 import { navigationTranslations } from "../../../translations/nav";
 import Dialog from "../../common/Dialog.astro";
+import Link from "../../common/Link.astro";
 
 interface Props {
   language: locale;
@@ -15,8 +16,6 @@ type Link = {
 
 const { language } = Astro.props;
 const translations = navigationTranslations[language];
-
-
 ---
 
 <Dialog
@@ -28,12 +27,13 @@ const translations = navigationTranslations[language];
       {
         navigationLinks.map((link) => (
           <li class="bg-black w-full border-b-gray-400 border-b-2">
-            <a
-              class="block focus-item transition-colors text-brand-white p-8 text-2xl hover:underline active:no-underline"
+            <Link
+              underline="onhover"
+              className="block text-brand-white p-8 text-2xl"
               href={link.href(language)}
             >
               {link[language]}
-            </a>
+            </Link>
           </li>
         ))
       }
