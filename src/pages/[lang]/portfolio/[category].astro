@@ -2,8 +2,8 @@
 import type { locale } from "../../../assets/types/i18n";
 import { companyData } from "../../../common/companyData";
 import { portfolioCategories } from "../../../common/portfolio";
+import Link from "../../../components/common/Link.astro";
 import PageTitle from "../../../components/common/PageTitle.astro";
-import Typography from "../../../components/common/Typography.astro";
 import FullSizeImageDialog from "../../../components/features/portfolio/FullSizeImageDialog.astro";
 import PortfolioCard from "../../../components/features/portfolio/PortfolioCard.astro";
 import Layout from "../../../layouts/Layout.astro";
@@ -47,7 +47,7 @@ const companyName = companyData[lang].name;
         ))
       }
     </ul>
-    <a href={`/${lang}/portfolio`} class="text-link-blue underline hover:no-underline active:underline w-max mx-auto">{translations.backToIndex}</a>
+    <Link href={`/${lang}/portfolio`} className="text-link-blue w-max mx-auto">{translations.backToIndex}</Link>
   </section>
 </Layout>
 

@@ -6,6 +6,7 @@ import FlagUK from "../../icons/FlagUK.astro";
 import { navigationTranslations } from "../../../translations/nav";
 import FlagBulgaria from "../../icons/FlagBulgaria.astro";
 import { navigationLinks } from "../../../common/navigation";
+import Link from "../../common/Link.astro";
 
 interface Props {
   language: locale;
@@ -13,8 +14,7 @@ interface Props {
 }
 
 const { language, page } = Astro.props;
-const href = (lang: locale) => page === '' ? '/' + lang : `/${lang}/${page}`;
-
+const href = (lang: locale) => (page === "" ? "/" + lang : `/${lang}/${page}`);
 
 const logos = srcset([
   ["logo_studio_dada.png", 1575],
@@ -39,7 +39,7 @@ const sizes = imageSizes([170, 250, 290, 504]);
     {
       language === "bg" ? (
         <a
-          href={href('en')}
+          href={href("en")}
           class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
           aria-description="Смени на английски език / switch to English"
           title="Смени на английски език / switch to English"
@@ -49,7 +49,7 @@ const sizes = imageSizes([170, 250, 290, 504]);
         </a>
       ) : (
         <a
-          href={href('bg')}
+          href={href("bg")}
           class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
           aria-description="Switch to Bulgarian / смени на български език"
           title="Switch to Bulgarian / смени на български език"
@@ -64,12 +64,13 @@ const sizes = imageSizes([170, 250, 290, 504]);
       {
         navigationLinks.map((link) => (
           <li class="text-base xl:text-xl">
-            <a
-              class="text-brand-white hover:underline focus-item transition-colors"
+            <Link
+              underline="onhover"
+              className="text-brand-white"
               href={link.href(language)}
             >
               {link[language]}
-            </a>
+            </Link>
           </li>
         ))
       }

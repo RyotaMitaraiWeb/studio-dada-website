@@ -2,6 +2,7 @@
 import type { locale } from "../../assets/types/i18n";
 import { companyData } from "../../common/companyData";
 import Box from "../../components/common/Box.astro";
+import Link from "../../components/common/Link.astro";
 import PageTitle from "../../components/common/PageTitle.astro";
 import Typography from "../../components/common/Typography.astro";
 import ContactsBox from "../../components/features/contacts/ContactsBox.astro";
@@ -47,11 +48,8 @@ const companyName = companyData[lang].name;
         </h2>
         <Typography>
           {companyData[lang].address}
-          (<a
-            href={companyData.googleMapsUrl}
-            target="_blank"
-            class="focus-item transition-colors underline hover:no-underline active:no-underline"
-            >{footerTranslations[lang].viewInGoogleMaps}</a
+          (<Link href={companyData.googleMapsUrl} target="_blank"
+            >{footerTranslations[lang].viewInGoogleMaps}</Link
           >)
         </Typography>
       </ContactsBox>
@@ -61,9 +59,8 @@ const companyName = companyData[lang].name;
           {translations.phone}
         </h2>
         <Typography>
-          <a
-            class="hover:underline focus-item transition-colors"
-            href={`tel:${phoneNumber}`}>{companyData.phoneNumber}</a
+          <Link underline="onhover" href={`tel:${phoneNumber}`}
+            >{companyData.phoneNumber}</Link
           >
         </Typography>
       </ContactsBox>
@@ -78,12 +75,9 @@ const companyName = companyData[lang].name;
           {
             companyData.email.map((email) => (
               <Typography tag="li">
-                <a
-                  class="hover:underline focus-item transition-colors"
-                  href={`mailto:${email}`}
-                >
+                <Link underline="onhover" href={`mailto:${email}`}>
                   {email}
-                </a>
+                </Link>
               </Typography>
             ))
           }
