@@ -7,7 +7,11 @@ interface Props extends HTMLAttributes<"a"> {
   underline?: "default" | "onhover";
 }
 
-const { className, underline: underlineOnHover = "default", ...props } = Astro.props;
+const {
+  className,
+  underline: underlineOnHover = "default",
+  ...props
+} = Astro.props;
 ---
 
 <a
@@ -18,7 +22,5 @@ const { className, underline: underlineOnHover = "default", ...props } = Astro.p
       : "no-underline hover:underline active:no-underline",
     "focus-item transition-colors",
     className,
-  ]}
+  ]}><slot /></a
 >
-  <slot />
-</a>
