@@ -2,6 +2,7 @@
 import type { locale } from "../../assets/types/i18n";
 import { clients } from "../../common/clients";
 import { companyData } from "../../common/companyData";
+import Link from "../../components/common/Link.astro";
 import PageTitle from "../../components/common/PageTitle.astro";
 import Section from "../../components/common/Section.astro";
 import Typography from "../../components/common/Typography.astro";
@@ -45,11 +46,7 @@ const companyName = companyData[lang].name;
     <Typography>{translations.section.firstParagraph}</Typography>
     <Typography>
       {text}
-      <a
-        href={`/${lang}/contacts`}
-        class="underline hover:no-underline active:underline focus-item transition-colors"
-        >{link}</a
-      >.
+      <Link href={`/${lang}/contacts`}>{link}</Link>.
     </Typography>
   </Section>
 </Layout>
