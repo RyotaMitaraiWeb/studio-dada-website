@@ -11,6 +11,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { catalogueTranslations } from "../../../translations/catalogue";
 import { imagesUrl } from "../../../util/imageUrl";
 import { companyData } from "../../../common/companyData";
+import Link from "../../../components/common/Link.astro";
 
 interface Props {
   lang: locale;
@@ -95,11 +96,7 @@ const companyName = companyData[lang].name;
   <Section title={translations.productOrServiceNotFound.title}>
     <Typography
       >{first}
-      <a
-        href={`/${lang}/contacts`}
-        class="focus-item underline hover:no-underline active:underline transition-colors"
-        >{link}</a
-      >{second}</Typography
+      <Link href={`/${lang}/contacts`}>{link}</Link>{second}</Typography
     >
   </Section>
 </Layout>
