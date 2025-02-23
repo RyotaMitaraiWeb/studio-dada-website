@@ -12,12 +12,17 @@ body {
   height: 100%;
 }
 
-body {
+body, body.not-found > div {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: #f9f9f9;
   row-gap: 32px;
+}
+
+body.not-found {
+  display: block;
+  min-height: initial;
 }
 
 #main {

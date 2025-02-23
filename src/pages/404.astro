@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import { locales } from "../common/locales";
+import Footer from "../components/layout/footer/Footer.astro";
+import Navigation from "../components/layout/nav/Navigation.astro";
+import PageTitle from "../components/common/PageTitle.astro";
+import { notFound404Translations } from "../translations/notFound404";
+import Typography from "../components/common/Typography.astro";
+import Link from "../components/common/Link.astro";
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width" name="viewport" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content={Astro.generator} name="generator" />
+    <title>404</title>
+  </head>
+  <body class="not-found">
+    {
+      locales.map((locale) => (
+        <div id={locale} style="display:none;" class="flex flex-col gap-8">
+          <Navigation language={locale} />
+          <main id="main" class="flex flex-col items-center gap-8 py-4">
+            <PageTitle>{notFound404Translations[locale].title}</PageTitle>
+            <Typography>{notFound404Translations[locale].text}</Typography>
+            <Link href={`/${locale}`} className="text-link-blue w-max text-base lg:text-xl">
+              {notFound404Translations[locale].backToHome}
+            </Link>
+          </main>
+          <Footer language={locale} />
+        </div>
+      ))
+    }
+  </body>
+</html>
+
+<script src="/src/scripts/global.ts"></script>
+<script>
+  import { determine404Language } from "../util/determine404Language";
+  window.addEventListener("DOMContentLoaded", () => {
+    const language = determine404Language();
+    const page = document.getElementById(language);
+    if (page) {
+      page.style.display = "block";
+
+      const html = document.querySelector('html');
+      if (html) {
+        html.lang = language;
+      }
+    }
+  });
+</script>
