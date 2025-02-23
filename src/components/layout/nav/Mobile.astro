@@ -11,9 +11,10 @@ import FlagBulgaria from "../../icons/FlagBulgaria.astro";
 interface Props {
   language: locale;
   page: string;
+  is404?: boolean;
 }
 
-const { language, page } = Astro.props;
+const { language, page, is404 } = Astro.props;
 const href = (lang: locale) => (page === "" ? "/" + lang : `/${lang}/${page}`);
 
 const logos = srcset([
@@ -35,26 +36,30 @@ const sizes = imageSizes([170, 250]);
   </a>
   <div class="flex items-center gap-4">
     {
-      language === "bg" ? (
-        <a
-          href={href("en")}
-          class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
-          aria-description="Смени на английски език / switch to English"
-          hreflang="en"
-          title="Смени на английски език / switch to English"
-        >
-          <FlagUK size={30} />
-        </a>
-      ) : (
-        <a
-          href={href("bg")}
-          class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
-          aria-description="Switch to Bulgarian / смени на български език"
-          hreflang="bg"
-          title="Switch to Bulgarian / смени на български език"
-        >
-          <FlagBulgaria size={30} />
-        </a>
+      is404 ? null : (
+        <Fragment>
+          {language === "bg" ? (
+            <a
+              href={href("en")}
+              class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+              aria-description="Смени на английски език / switch to English"
+              hreflang="en"
+              title="Смени на английски език / switch to English"
+            >
+              <FlagUK size={30} />
+            </a>
+          ) : (
+            <a
+              href={href("bg")}
+              class="focus-item transition-colors border border-brand-white flex w-max p-0.5 rounded-sm"
+              aria-description="Switch to Bulgarian / смени на български език"
+              hreflang="bg"
+              title="Switch to Bulgarian / смени на български език"
+            >
+              <FlagBulgaria size={30} />
+            </a>
+          )}
+        </Fragment>
       )
     }
     <button
@@ -70,7 +75,7 @@ const sizes = imageSizes([170, 250]);
 </nav>
 
 <script>
-import { openDialog } from "../../../util/openDialog";
+  import { openDialog } from "../../../util/openDialog";
 
   const button = document.querySelector(
     "#open-mobile-menu"

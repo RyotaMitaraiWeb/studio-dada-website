@@ -1,0 +1,135 @@
+---
+import "../styles/global.css";
+import { languageLabels, locales } from "../common/locales";
+import Footer from "../components/layout/footer/Footer.astro";
+import Navigation from "../components/layout/nav/Navigation.astro";
+import PageTitle from "../components/common/PageTitle.astro";
+import { notFound404Translations } from "../translations/notFound404";
+import Typography from "../components/common/Typography.astro";
+import Link from "../components/common/Link.astro";
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width" name="viewport" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content={Astro.generator} name="generator" />
+    <title>404</title>
+  </head>
+  <body class="not-found">
+    {
+      locales.map((locale) => (
+        <div
+          id={locale}
+          style="display:none;"
+          class="flex flex-col gap-8 page-404"
+        >
+          <Navigation is404 language={locale} />
+          <main id="main" class="flex flex-col items-center gap-8 py-4">
+            <div aria-label={notFound404Translations[locale].changeLanguage} class="flex flex-wrap gap-16 justify-center" data-language={locale}>
+              {locales.map((l) => {
+                const Flag = languageLabels[l].flag;
+                return (
+                  <div>
+                    <input
+                      data-locale={l}
+                      data-language={locale}
+                      name={`${locale}-language`}
+                      id={`${locale}-radio-${l}`}
+                      type="radio"
+                      value={l}
+                      class="absolute w-0 h-0 focus:outline-0"
+                    />
+                     <label class="flex flex-col gap-4 items-center cursor-pointer hover:opacity-70 motion-safe:transition-colors active:shadow-md" for={`${locale}-radio-${l}`}>
+                      <Flag size={64} />
+                      <Typography tag="span">{languageLabels[locale][l]}</Typography>
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+            <PageTitle>{notFound404Translations[locale].title}</PageTitle>
+            <Typography>{notFound404Translations[locale].text}</Typography>
+            <Link
+              href={`/${locale}`}
+              className="text-link-blue w-max text-base lg:text-xl"
+            >
+              {notFound404Translations[locale].backToHome}
+            </Link>
+          </main>
+          <Footer language={locale} />
+        </div>
+      ))
+    }
+  </body>
+</html>
+
+<script src="/src/scripts/global.ts"></script>
+<script>
+  import type { locale } from "../assets/types/i18n";
+  import { notFound404Translations } from "../translations/notFound404";
+  import { determine404Language } from "../util/determine404Language";
+  window.addEventListener("DOMContentLoaded", () => {
+    const language = determine404Language();
+    const page = document.getElementById(language);
+
+    const radios = document.querySelectorAll(
+      'input[type="radio"]'
+    ) as NodeListOf<HTMLInputElement>;
+    for (const radio of radios) {
+      radio.addEventListener("change", () => {
+        const locale = radio.dataset.locale as locale;
+        const pages = document.querySelectorAll(
+          ".page-404"
+        ) as NodeListOf<HTMLElement>;
+
+        const page = document.querySelector(`div[data-language="${locale}"]`);
+        for (const page of pages) {
+          if (page.id.includes(locale)) {
+            page.style.display = "block";
+          } else {
+            page.style.display = "none";
+          }
+        }
+
+        const languageRadio = page?.querySelector(
+          `input[data-locale="${locale}"]`
+        ) as HTMLInputElement | null;
+
+        if (languageRadio) {
+          languageRadio.checked = true;
+          languageRadio.focus();
+        }
+      });
+    }
+
+    if (page) {
+      page.style.display = "block";
+      document.title = notFound404Translations[language].title;
+
+      const form = page.querySelector(
+        `div[data-language="${language}"`
+      ) as HTMLDivElement | null;
+
+      const radio = form?.querySelector(
+        `input[data-locale="${language}"]`
+      ) as HTMLInputElement | null;
+      if (radio) {
+        radio.checked = true;
+      }
+
+      const html = document.querySelector("html");
+      if (html) {
+        html.lang = language;
+      }
+    }
+  });
+</script>
+
+<style scoped>
+  input:focus-visible + label {
+    outline: 3px solid blue;
+  }
+</style>
