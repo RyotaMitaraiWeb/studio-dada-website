@@ -26,7 +26,10 @@ import Link from "../components/common/Link.astro";
           <main id="main" class="flex flex-col items-center gap-8 py-4">
             <PageTitle>{notFound404Translations[locale].title}</PageTitle>
             <Typography>{notFound404Translations[locale].text}</Typography>
-            <Link href={`/${locale}`} className="text-link-blue w-max text-base lg:text-xl">
+            <Link
+              href={`/${locale}`}
+              className="text-link-blue w-max text-base lg:text-xl"
+            >
               {notFound404Translations[locale].backToHome}
             </Link>
           </main>
@@ -39,6 +42,7 @@ import Link from "../components/common/Link.astro";
 
 <script src="/src/scripts/global.ts"></script>
 <script>
+  import { notFound404Translations } from "../translations/notFound404";
   import { determine404Language } from "../util/determine404Language";
   window.addEventListener("DOMContentLoaded", () => {
     const language = determine404Language();
@@ -46,7 +50,8 @@ import Link from "../components/common/Link.astro";
     if (page) {
       page.style.display = "block";
 
-      const html = document.querySelector('html');
+      const html = document.querySelector("html");
+      document.title = notFound404Translations[language].title;
       if (html) {
         html.lang = language;
       }
