@@ -30,7 +30,7 @@ import FlagUK from "../components/icons/FlagUK.astro";
         >
           <Navigation language={locale} />
           <main id="main" class="flex flex-col items-center gap-8 py-4">
-            <div data-language={locale}>
+            <div class="flex flex-wrap gap-16 justify-center" data-language={locale}>
               {locales.map((l) => {
                 const Flag = languageLabels[l].flag;
                 return (
@@ -42,10 +42,11 @@ import FlagUK from "../components/icons/FlagUK.astro";
                       id={`${locale}-radio-${l}`}
                       type="radio"
                       value={l}
+                      class="absolute w-0 h-0"
                     />
-                    <label for={`${locale}-radio-${l}`}>
-                      <Flag size={32} />
-                      {languageLabels[locale][l]}
+                    <label class="flex flex-col gap-4 items-center cursor-pointer hover:opacity-70 motion-safe:transition-colors active:shadow-md" for={`${locale}-radio-${l}`}>
+                      <Flag size={64} />
+                      <Typography tag="span">{languageLabels[locale][l]}</Typography>
                     </label>
                   </div>
                 );
