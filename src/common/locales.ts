@@ -1,19 +1,24 @@
+import type { Props } from "astro";
 import type { locale } from "../assets/types/i18n";
+import FlagBulgaria from "../components/icons/FlagBulgaria.astro";
+import FlagUK from "../components/icons/FlagUK.astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export const locales: locale[] = ['bg', 'en'];
 
 export const languageLabels: Record<locale, LanguageLabel> = {
   bg: {
-    bulgarian: 'Български',
-    english: 'Английски'
+    bg: 'Български',
+    en: 'Английски',
+    flag: FlagBulgaria,
   },
   en: {
-    bulgarian: 'Bulgarian',
-    english: 'English',
+    bg: 'Bulgarian',
+    en: 'English',
+    flag: FlagUK,
   }
 }
 
-type LanguageLabel = {
-  bulgarian: string;
-  english: string;
+interface LanguageLabel extends Record<locale, string> {
+  flag: AstroComponentFactory
 }

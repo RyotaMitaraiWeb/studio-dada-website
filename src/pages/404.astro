@@ -7,6 +7,8 @@ import PageTitle from "../components/common/PageTitle.astro";
 import { notFound404Translations } from "../translations/notFound404";
 import Typography from "../components/common/Typography.astro";
 import Link from "../components/common/Link.astro";
+import FlagBulgaria from "../components/icons/FlagBulgaria.astro";
+import FlagUK from "../components/icons/FlagUK.astro";
 ---
 
 <!doctype html>
@@ -29,32 +31,25 @@ import Link from "../components/common/Link.astro";
           <Navigation language={locale} />
           <main id="main" class="flex flex-col items-center gap-8 py-4">
             <div data-language={locale}>
-              <div>
-                <input
-                  data-locale="bg"
-                  data-language={locale}
-                  name={`${locale}-language`}
-                  id={`${locale}-radio-bg`}
-                  type="radio"
-                  value="bg"
-                />
-                <label for={`${locale}-radio-bg`}>
-                  {languageLabels[locale].bulgarian}
-                </label>
-              </div>
-              <div>
-                <input
-                  data-locale="en"
-                  data-language={locale}
-                  name={`${locale}-language`}
-                  id={`${locale}-radio-en`}
-                  type="radio"
-                  value="en"
-                />
-                <label for={`${locale}-radio-en`}>
-                  {languageLabels[locale].english}
-                </label>
-              </div>
+              {locales.map((l) => {
+                const Flag = languageLabels[l].flag;
+                return (
+                  <div>
+                    <input
+                      data-locale={l}
+                      data-language={locale}
+                      name={`${locale}-language`}
+                      id={`${locale}-radio-${l}`}
+                      type="radio"
+                      value={l}
+                    />
+                    <label for={`${locale}-radio-${l}`}>
+                      <Flag size={32} />
+                      {languageLabels[locale][l]}
+                    </label>
+                  </div>
+                );
+              })}
             </div>
             <PageTitle>{notFound404Translations[locale].title}</PageTitle>
             <Typography>{notFound404Translations[locale].text}</Typography>
@@ -103,13 +98,13 @@ import Link from "../components/common/Link.astro";
         const languageRadio = page?.querySelector(
           `input[data-locale="${locale}"]`
         ) as HTMLInputElement | null;
-        
+
         if (languageRadio) {
           languageRadio.checked = true;
         }
       });
     }
-  
+
     if (page) {
       page.style.display = "block";
       document.title = notFound404Translations[language].title;
@@ -132,3 +127,5 @@ import Link from "../components/common/Link.astro";
     }
   });
 </script>
+
+<style scoped></style>
