@@ -42,9 +42,9 @@ import FlagUK from "../components/icons/FlagUK.astro";
                       id={`${locale}-radio-${l}`}
                       type="radio"
                       value={l}
-                      class="absolute w-0 h-0"
+                      class="absolute w-0 h-0 focus:outline-0"
                     />
-                    <label class="flex flex-col gap-4 items-center cursor-pointer hover:opacity-70 motion-safe:transition-colors active:shadow-md" for={`${locale}-radio-${l}`}>
+                     <label class="flex flex-col gap-4 items-center cursor-pointer hover:opacity-70 motion-safe:transition-colors active:shadow-md" for={`${locale}-radio-${l}`}>
                       <Flag size={64} />
                       <Typography tag="span">{languageLabels[locale][l]}</Typography>
                     </label>
@@ -129,4 +129,8 @@ import FlagUK from "../components/icons/FlagUK.astro";
   });
 </script>
 
-<style scoped></style>
+<style scoped>
+  input:focus-visible + label {
+    outline: 3px solid blue;
+  }
+</style>
