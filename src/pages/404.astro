@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { locales } from "../common/locales";
+import { languageLabels, locales } from "../common/locales";
 import Footer from "../components/layout/footer/Footer.astro";
 import Navigation from "../components/layout/nav/Navigation.astro";
 import PageTitle from "../components/common/PageTitle.astro";
@@ -21,9 +21,41 @@ import Link from "../components/common/Link.astro";
   <body class="not-found">
     {
       locales.map((locale) => (
-        <div id={locale} style="display:none;" class="flex flex-col gap-8">
+        <div
+          id={locale}
+          style="display:none;"
+          class="flex flex-col gap-8 page-404"
+        >
           <Navigation language={locale} />
           <main id="main" class="flex flex-col items-center gap-8 py-4">
+            <div data-language={locale}>
+              <div>
+                <input
+                  data-locale="bg"
+                  data-language={locale}
+                  name={`${locale}-language`}
+                  id={`${locale}-radio-bg`}
+                  type="radio"
+                  value="bg"
+                />
+                <label for={`${locale}-radio-bg`}>
+                  {languageLabels[locale].bulgarian}
+                </label>
+              </div>
+              <div>
+                <input
+                  data-locale="en"
+                  data-language={locale}
+                  name={`${locale}-language`}
+                  id={`${locale}-radio-en`}
+                  type="radio"
+                  value="en"
+                />
+                <label for={`${locale}-radio-en`}>
+                  {languageLabels[locale].english}
+                </label>
+              </div>
+            </div>
             <PageTitle>{notFound404Translations[locale].title}</PageTitle>
             <Typography>{notFound404Translations[locale].text}</Typography>
             <Link
@@ -42,16 +74,58 @@ import Link from "../components/common/Link.astro";
 
 <script src="/src/scripts/global.ts"></script>
 <script>
+  import type { locale } from "../assets/types/i18n";
   import { notFound404Translations } from "../translations/notFound404";
   import { determine404Language } from "../util/determine404Language";
   window.addEventListener("DOMContentLoaded", () => {
     const language = determine404Language();
     const page = document.getElementById(language);
+
+    const radios = document.querySelectorAll(
+      'input[type="radio"]'
+    ) as NodeListOf<HTMLInputElement>;
+    for (const radio of radios) {
+      radio.addEventListener("change", () => {
+        const locale = radio.dataset.locale as locale;
+        const pages = document.querySelectorAll(
+          ".page-404"
+        ) as NodeListOf<HTMLElement>;
+
+        const page = document.querySelector(`div[data-language="${locale}"]`);
+        for (const page of pages) {
+          if (page.id.includes(locale)) {
+            page.style.display = "block";
+          } else {
+            page.style.display = "none";
+          }
+        }
+
+        const languageRadio = page?.querySelector(
+          `input[data-locale="${locale}"]`
+        ) as HTMLInputElement | null;
+        
+        if (languageRadio) {
+          languageRadio.checked = true;
+        }
+      });
+    }
+  
     if (page) {
       page.style.display = "block";
+      document.title = notFound404Translations[language].title;
+
+      const form = page.querySelector(
+        `div[data-language="${language}"`
+      ) as HTMLDivElement | null;
+
+      const radio = form?.querySelector(
+        `input[data-locale="${language}"]`
+      ) as HTMLInputElement | null;
+      if (radio) {
+        radio.checked = true;
+      }
 
       const html = document.querySelector("html");
-      document.title = notFound404Translations[language].title;
       if (html) {
         html.lang = language;
       }
