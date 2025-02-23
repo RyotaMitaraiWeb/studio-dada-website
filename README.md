@@ -25,7 +25,7 @@ npm run preview
 - ``scripts`` - contains JavaScript files that can be loaded with ``<script>`` tags.
 - ``styles`` - contains CSS rules that can be used in multiple areas of the website
 - ``translations`` - contains the content for the page, grouped by languages. Currently supported languages are Bulgarian and English.
-- ``util`` - contains utility functions that are meant to solve some rather technical issues. [Read more](./util/README.md)
+- ``util`` - contains utility functions that are meant to solve some rather technical issues. [Read more](./src/util/README.md)
 
 ## Useful CSS classes
 ### ``.focus-item``
