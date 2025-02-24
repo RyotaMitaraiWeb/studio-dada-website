@@ -23,5 +23,9 @@ jobs:
       - name: Build Astro
         run: npm run build
 
+      - name: Enable Firebase Web Frameworks Experiment
+        run: npx firebase experiments:enable webframeworks
+
+
       - name: Deploy to Firebase Preview
         run: npx firebase hosting:channel:deploy pr-${{ github.event.number }} --token "${{ secrets.FIREBASE_TOKEN }}"
