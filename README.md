@@ -10,21 +10,21 @@ npm run preview
 ## Used technologies
 - TailwindCSS
 - Firebase (for hosting)
-- Cloudify (for image hosting - read more later on)
+- Cloudify (for image hosting - [Read more](/README.md#Image%20hosting))
 - note that this project does not use any front-end framework (like React or Vue); everything is pure Astro.
 
 ## Project architecture (``src``)
 - ``assets/images`` - holds images for local development
 - ``common`` - holds data that is reused across the website
 - ``components`` - holds Astro components. Components are grouped in the following way:
-- - ``common`` - low-level components that are used in multiple parts of the website, such as links, buttons, dialogs, and more
+- - ``common`` - low-level components that are used in multiple parts of the website, such as links, buttons, dialogs, and more. [Read more](/src/components/common/README.md)
 - - ``features`` - specific UI elements (like portfolio cards) that have been extracted here for better code organization and to make the pages' code cleaner
 - - ``icons`` - graphical elements that are composed of SVG code. Some of them allow you to control their sizes via props
 - - ``layout`` - high-level components used in the ``Layout`` tag, like footers and navigation menus
 - ``layouts`` - contains layout elements (do not confuse this with ``layout`` components. Files here use said components)
 - ``scripts`` - contains JavaScript files that can be loaded with ``<script>`` tags.
 - ``styles`` - contains CSS rules that can be used in multiple areas of the website
-- ``translations`` - contains the content for the page, grouped by languages. Currently supported languages are Bulgarian and English.
+- ``translations`` - contains the content for the page, grouped by languages. Currently supported languages are Bulgarian and English. [Read more](/src/translations/README.md)
 - ``util`` - contains utility functions that are meant to solve some rather technical issues. [Read more](./src/util/README.md)
 
 ## Useful CSS classes
@@ -65,3 +65,6 @@ VITE_PUBLIC_IMAGES=http://localhost:4321/src/assets/images/
 - ``VITE_PUBLIC_IMAGES`` - points to the URL of the remote image service. When running this locally, you want an absolute path to the images folder in the ``assets`` directory; this is to ensure that whatever you see in development environment will also be seen in production environment.
 
 To apply environment variables to production, deploy an ``.env.production`` file with the environment variables listed above, filled with your actual data. The file must be located at the same level as ``.env.development``
+
+### Image hosting
+To circumvent Firebase's network transfer limit, all images in production are hosted on a Cloudify bucket. The host is provided via envrionment secrets, described in the section above.
