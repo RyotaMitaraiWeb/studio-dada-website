@@ -1,48 +1,70 @@
-# Astro Starter Kit: Basics
+# Studio Dada corporate website
 
-```sh
-npm create astro@latest -- --template basics
+## Running the project locally
+```bash
+npm run dev
+npm run build
+npm run preview
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Used technologies
+- TailwindCSS
+- Firebase (for hosting)
+- Cloudify (for image hosting - [Read more](/README.md#Image-hosting))
+- note that this project does not use any front-end framework (like React or Vue); everything is pure Astro.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project architecture (``src``)
+- ``assets/images`` - holds images for local development
+- ``common`` - holds data that is reused across the website
+- ``components`` - holds Astro components. Components are grouped in the following way:
+- - ``common`` - low-level components that are used in multiple parts of the website, such as links, buttons, dialogs, and more. [Read more](/src/components/common/README.md)
+- - ``features`` - specific UI elements (like portfolio cards) that have been extracted here for better code organization and to make the pages' code cleaner
+- - ``icons`` - graphical elements that are composed of SVG code. Some of them allow you to control their sizes via props
+- - ``layout`` - high-level components used in the ``Layout`` tag, like footers and navigation menus
+- ``layouts`` - contains layout elements (do not confuse this with ``layout`` components. Files here use said components)
+- ``scripts`` - contains JavaScript files that can be loaded with ``<script>`` tags.
+- ``styles`` - contains CSS rules that can be used in multiple areas of the website
+- ``translations`` - contains the content for the page, grouped by languages. Currently supported languages are Bulgarian and English. [Read more](/src/translations/README.md)
+- ``util`` - contains utility functions that are meant to solve some rather technical issues. [Read more](./src/util/README.md)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Useful CSS classes
+### ``.focus-item``
+When the element has a ``focus-visible`` state, applies a specific outline to indicate that the element is focused.
 
-## 🚀 Project Structure
+### ``.screenreader-only``
+Makes certain content "visible" only to users using assistive technologies. What this class _technically_ does is move the content offscreen and shrink it as much as possible without actually hiding it (as hiding it will render it invisible to screenreaders as well).
 
-Inside of your Astro project, you'll see the following folders and files:
+The implementation follows [WCAG recommendations about hiding content from sighted users](https://webaim.org/techniques/css/invisiblecontent/#techniques)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+**Note:** avoid hiding interactive content with this class, as this may cause confusion to people tabbing through the page with their keyboard. If needed, handle such cases manually so that the content is visible when focused.
+
+## TailwindCSS variables
+The following variables are specific to this project (either new or overriding existing ones):
+
+### Colors
+- ``--color-black`` - a black color matching the one found in the company's logo
+- ``--color-brand-white`` - a non-pure white color, typically meant to be used as the text color of elements with a ``--color-black`` background.
+- ``--color-gray`` - a gray color used in some element borders and outlines
+- ``--color-link-blue`` - a blue color meant to make some links distinctive
+
+### Viewports
+The following breakpoints are used for the purposes of this project
+
+- ``--breakpoint-sm`` - 320px
+- ``--breakpoint-md``- 744px
+- ``--breakpoint-lg`` - 1024px
+- ``--breakpoint-xl`` - 1440px
+
+Due to this, the ``xs`` breakpoint is rendered useless.
+
+## Environment secrets
+```bash
+VITE_PUBLIC_IMAGES=http://localhost:4321/src/assets/images/
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- ``VITE_PUBLIC_IMAGES`` - points to the URL of the remote image service. When running this locally, you want an absolute path to the images folder in the ``assets`` directory; this is to ensure that whatever you see in development environment will also be seen in production environment.
 
-## 🧞 Commands
+To apply environment variables to production, deploy an ``.env.production`` file with the environment variables listed above, filled with your actual data. The file must be located at the same level as ``.env.development``
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Image hosting
+To circumvent Firebase's network transfer limit, all images in production are hosted on a Cloudify bucket. The host is provided via envrionment secrets, described in the section above.
