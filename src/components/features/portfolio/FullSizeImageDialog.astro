@@ -14,10 +14,10 @@ const { imageFileName, caption, closeLabel } = Astro.props;
 ---
 
 <Dialog
-  className="full-width-dialog fixed top-0 backdrop:bg-black backdrop:opacity-90 bg-transparent w-screen h-max mx-auto overflow-hidden"
+  className="full-width-dialog fixed top-0 backdrop:bg-black w-full backdrop:opacity-90 bg-transparent h-max mx-auto"
   id={imageFileName}
 >
-  <div class="h-full overflow-auto">
+  <div class="h-full w-max mx-auto">
     <figure class="flex items-center justify-center flex-col mt-16">
       <img src={imagesUrl(imageFileName)} alt="" />
       <figcaption class="text-brand-white font-bold text-2xl">
