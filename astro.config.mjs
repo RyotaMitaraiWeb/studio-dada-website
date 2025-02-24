@@ -14,6 +14,6 @@ export default defineConfig({
   devToolbar: {
       enabled: false,
   },
-
+  site: 'https://studiodada-2ee96.web.app', // TO-DO: change address to custom domain if such is bought
   integrations: [sitemap()]
 });
