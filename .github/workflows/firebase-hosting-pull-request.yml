@@ -20,3 +20,7 @@ jobs:
           projectId: studiodada-2ee96
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
+      - name: Install dependencies
+        run: npm install
+      - name: Build Astro
+        run: npm run build
