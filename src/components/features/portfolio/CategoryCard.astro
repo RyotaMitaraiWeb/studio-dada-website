@@ -23,7 +23,14 @@ const translations = portfolioTranslations[language];
   className="w-75 rounded flex flex-col items-center mx-auto p-2 gap-4"
 >
   <div class="flex flex-col">
-    <img src={image} alt="" class="w-62.5 h-62.5" />
+    <a
+      href={`/${language}/portfolio/${category.category}`}
+      tabindex="-1"
+      aria-hidden="true"
+      class="overflow-hidden"
+    >
+      <img src={image} alt="" class="w-62.5 h-62.5" />
+    </a>
     <h2 class="font-bold px-2 text-center text-2xl">{data.name}</h2>
   </div>
   <LinkButton
@@ -32,3 +39,15 @@ const translations = portfolioTranslations[language];
     >{translations.explore}</LinkButton
   >
 </Box>
+
+<style scoped>
+  a:hover img {
+    transform: scale(1.25);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    img {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+</style>
