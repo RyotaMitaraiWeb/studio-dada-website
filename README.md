@@ -10,7 +10,7 @@ npm run preview
 ## Used technologies
 - TailwindCSS
 - Firebase (for hosting)
-- Cloudify (for image hosting - [Read more](/README.md#Image%20hosting))
+- Cloudify (for image hosting - [Read more](/README.md#Image-hosting))
 - note that this project does not use any front-end framework (like React or Vue); everything is pure Astro.
 
 ## Project architecture (``src``)
