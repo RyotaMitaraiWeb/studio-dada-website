@@ -47,7 +47,7 @@ const dialog = document.querySelector("dialog")!;
 openDialog(dialog);
 ```
 
-This function is meant to be used for dialogs created with the [`Dialog`](/src/common/README.md#Dialog) component. In addition to opening the passed dialog, the function also performs the following operations:
+This function is meant to be used for dialogs created with the [`Dialog`](/src/components/common/README.md#Dialog) component. In addition to opening the passed dialog, the function also performs the following operations:
 
 - blocks scrolling on the page
 - pushes a new state into the user's history. The new state has a `dialogOpen` property, which equals `true`. This behavior is used to implement a "close by going back" feature for the modals. The aforementioned property is used by the `Dialog`s to go back in history if the user closes the modal by any means other than going back.
