@@ -22,6 +22,7 @@ const { language, title, metaDescription } = Astro.props;
     <meta content={Astro.generator} name="generator" />
     <meta name="description" content={metaDescription} />
     <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
     <Navigation language={language} />
