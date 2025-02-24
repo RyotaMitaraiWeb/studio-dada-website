@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Build Astro
+        run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -20,7 +24,3 @@ jobs:
           projectId: studiodada-2ee96
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
-      - name: Install dependencies
-        run: npm install
-      - name: Build Astro
-        run: npm run build
