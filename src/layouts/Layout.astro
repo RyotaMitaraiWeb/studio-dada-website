@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navigation from "../components/layout/nav/Navigation.astro";
 import Footer from "../components/layout/footer/Footer.astro";
 import type { locale } from "../assets/types/i18n";
+import { locales } from "../common/locales";
 
 interface Props {
   language: locale;
@@ -11,6 +12,10 @@ interface Props {
 }
 
 const { language, title, metaDescription } = Astro.props;
+const url = Astro.url;
+const path = url.pathname;
+
+const page = path.replace("/bg", "").replace("/en", "");
 ---
 
 <!doctype html>
@@ -23,6 +28,21 @@ const { language, title, metaDescription } = Astro.props;
     <meta name="description" content={metaDescription} />
     <title>{title}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={`https://studiodada-2ee96.web.app/bg${page}`} />
+    {
+      locales.map((locale) => (
+        <link
+          rel="alternate"
+          hreflang={locale}
+          href={`https://studiodada-2ee96.web.app/${locale}${page}`}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`https://studiodada-2ee96.web.app/bg${page}`}
+    />
   </head>
   <body>
     <Navigation language={language} />
