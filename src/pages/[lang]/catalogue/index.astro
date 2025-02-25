@@ -56,16 +56,21 @@ const companyName = companyData[lang].name;
     {
       products.map((product) => (
         <li class="w-64">
-          <Box className="flex flex-col w-full h-full pb-4 rounded">
-            <img
-              loading="lazy"
-              decoding="async"
-              src={imagesUrl(product.imageFileName)}
-              width="256"
-              height="256"
-              class="border-b border-gray mb-4"
-            />
-            <div class="flex flex-col gap-8 justify-between h-full px-4">
+          <Box className="flex flex-col w-full h-full pb-4 rounded overflow-hidden">
+            <a
+              href={`/${lang}/catalogue/${product.id}`}
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <img
+                loading="lazy"
+                decoding="async"
+                src={imagesUrl(product.imageFileName)}
+                width="256"
+                height="256"
+              />
+            </a>
+            <div class="flex flex-col gap-8 justify-between h-full px-4 border-t pt-4 border-gray">
               <h2 class="text-xl font-bold">{product.data.name}</h2>
               <LinkButton
                 href={`/${lang}/catalogue/${product.id}`}
@@ -100,3 +105,15 @@ const companyName = companyData[lang].name;
     >
   </Section>
 </Layout>
+
+<style scoped>
+  a:hover img {
+    transform: scale(1.25);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    img {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+</style>
